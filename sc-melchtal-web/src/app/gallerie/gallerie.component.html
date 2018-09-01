@@ -1,0 +1,20 @@
+<h2 id="toptitle">Gallerie</h2>
+<div id="text">
+  <mat-tab-group>
+    <div *ngFor="let gallery of library.galleries()">
+      <mat-tab label="{{gallery.year}}">
+        <div *ngFor="let album of gallery.albums">
+          <app-album [album]="album"></app-album>
+        </div>
+      </mat-tab>
+    </div>
+  </mat-tab-group>
+  <!--div *ngFor="let gallery of library.galleries()">
+    <div>
+      <h2>{{gallery.year}}</h2>
+      <div *ngFor="let album of gallery.albums">
+        <app-album [album]="album"></app-album>
+      </div>
+    </div>
+  </div-->
+</div>

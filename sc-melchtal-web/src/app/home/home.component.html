@@ -1,0 +1,101 @@
+<h2 id="toptitle">
+  Willkommen beim Ski- und Wanderclub Melchtal
+</h2>
+<div id="text">
+
+  <div *ngIf="showNews" id="home_news">
+    <div class="label1">
+      {{news_title}}
+    </div>
+    <p ng-bind-html="news_description">
+    </p>
+  </div>
+
+  <div id="hometop">
+
+    <div class="label1">
+      Skiclub Stirnbänder
+    </div>
+    <p>
+      Bitte füllt die Bestellformulare gemäss Anhang des Sommerprogramms aus. In der Bildergallerie könnt ihr die
+      unterschiedlichen Farben genauer betrachten.
+    </p>
+    &nbsp;
+    <br/>
+    <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
+
+    &nbsp;
+    <br/>
+    &nbsp;
+    <br/>
+
+  </div>
+
+  <div id="homeleft">
+
+    <div class="label1">
+      Die nächsten Anlässe
+    </div>
+    <ul>
+      <li *ngFor="let event of eventsInFuture">
+        {{event.fields.dateFrom | date : 'fullDate'}}
+        <br/>
+        <strong>{{event.fields.title}}</strong>
+      </li>
+    </ul>
+
+
+    <div class="smallfont">
+      Detailangaben siehe <a routerLink="/programm">Programm</a>
+    </div>
+
+    &nbsp;
+    <br/>
+    &nbsp;
+    <br/>
+
+  </div>
+
+  <div id="homeright">
+
+    <div class="label1">
+      Fotogalerie
+    </div>
+    Fotos von Anlässen, Oberwend usw.
+    <div class="smallfont">
+      Siehe <a routerLink="/gallerie">Fotos</a>
+    </div>
+    &nbsp;
+
+    <div class="label1">
+      Der Vorstand
+    </div>
+    Adressen und Fotos der Vorstands-Mitglieder
+    <div class="smallfont">
+      Siehe <a routerLink="/vorstand">Vorstand</a>
+    </div>
+    &nbsp;
+
+    <div class="label1">
+      Oberwend
+    </div>
+    Die Geschichte der Alphütte Oberwend
+    <div class="smallfont">
+      Siehe <a routerLink="/oberwend">Oberwend</a>
+    </div>
+    &nbsp;
+
+    <div class="label1">
+      Mitteilungen
+    </div>
+    Eine Mitteilung an den Ski- und Wanderclub Melchtal senden
+    <div class="smallfont">
+      Siehe <a routerLink="/kontakt">Kontakt</a>
+    </div>
+
+  </div>
+
+  <div style="clear: both;">
+
+  </div>
+</div>
