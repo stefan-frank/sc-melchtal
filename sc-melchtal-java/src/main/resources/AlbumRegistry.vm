@@ -1,13 +1,17 @@
-import { AlbumFactory } from '../AlbumFactory';
+import { Album } from '../Album';
 #foreach($album in $albums.iterator())
 import { $album.classname } from './$album.classname';
 #end
 
 export class AlbumRegistry {
 
-static loadAlbums() {
+static loadAlbums(): Array
+<Album> {
+    const albumList = [
 #foreach($album in $albums.iterator())
-AlbumFactory.registerAlbum(new ${album.classname}());
+    new ${album.classname}(),
 #end
+    ];
+    return albumList;
 }
 }

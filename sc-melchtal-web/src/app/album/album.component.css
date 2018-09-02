@@ -1,0 +1,10 @@
+#gallery_title {
+  font-weight: bold;
+  color: #000;
+  background-color: silver;
+  padding: 2px;
+}
+
+ngx-gallery {
+  padding-bottom: 10px;
+}

@@ -7,7 +7,6 @@ import org.apache.velocity.app.Velocity;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.text.ParseException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -43,7 +42,7 @@ public class Application {
                 List<ImageJson> imagesFromJson = mapper.readValue(is, new TypeReference<List<ImageJson>>() {
                 });
                 Album album = new Album();
-                LocalDateTime lowestDate = convert(imagesFromJson, album);
+                LocalDateTime lowestDate = convert(imagesFromJson, album, dataJsonFile.getParent().getFileName());
                 album.setTitle(extractTitle(dataJsonFile));
                 album.setDate(lowestDate);
                 albums.add(album);
@@ -88,8 +87,9 @@ public class Application {
         fw.close();
     }
 
-    private static LocalDateTime convert(List<ImageJson> imagesFromJson, Album album) throws ParseException {
+    private static LocalDateTime convert(List<ImageJson> imagesFromJson, Album album, Path fileName) {
         LocalDateTime lowestDate = LocalDateTime.now();
+
         List<Image> images = album.getImages();
         for (ImageJson source : imagesFromJson) {
             if (source.getDate() != null) {
@@ -99,11 +99,16 @@ public class Application {
                 }
             }
             Image target = new Image();
-            target.setSmall(source.getPreview_xxs().getPath());
-            target.setMedium(source.getPreview_xs().getPath());
-            target.setBig(source.getPreview_m().getPath());
+            target.setSmall(source.getThumbnail().getPath());
+            target.setMedium(source.getPreview().getPath());
+            target.setBig(source.getImage().getPath());
             images.add(target);
         }
+
+        LocalDateTime yearFromDirectory = LocalDateTime.parse(fileName.toString().substring(0, 4) + ":01:01 00:00:00", df);
+
+        lowestDate = yearFromDirectory.isBefore(lowestDate) ? yearFromDirectory : lowestDate;
+
         return lowestDate;
     }
 }

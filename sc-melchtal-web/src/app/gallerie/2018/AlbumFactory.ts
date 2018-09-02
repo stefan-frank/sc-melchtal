@@ -2,32 +2,26 @@ import {Album} from './Album';
 import {AlbumRegistry} from './generated/AlbumRegistry';
 
 export class AlbumFactory {
-
-  private static instance: AlbumFactory = new AlbumFactory();
-
   private map: Map<number, Array<Album>> = new Map<number, Array<Album>>();
 
-  private constructor() {
+  constructor() {
+    AlbumRegistry.loadAlbums().forEach(value => this.registerAlbum(value));
   }
 
-  static init() {
-    AlbumRegistry.loadAlbums();
-  }
-
-  static registerAlbum(album: Album) {
+  public registerAlbum(album: Album) {
     const year = album.date.getFullYear();
 
-    if (!this.instance.map.has(year)) {
-      this.instance.map.set(year, []);
+    if (!this.map.has(year)) {
+      this.map.set(year, []);
     }
 
-    const array = this.instance.map.get(year);
+    const array = this.map.get(year);
     array.push(album);
   }
 
-  static getAllAlbums(): Array<Album> {
+  public getAllAlbums(): Array<Album> {
     const allAlbums: Array<Album> = [];
-    this.instance.map.forEach((value, key) => value.forEach(value1 => allAlbums.push(value1)
+    this.map.forEach((value, key) => value.forEach(value1 => allAlbums.push(value1)
     ));
     return allAlbums;
   }

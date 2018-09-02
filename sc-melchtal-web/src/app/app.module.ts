@@ -19,7 +19,8 @@ import {NgxGalleryModule} from 'ngx-gallery';
 import 'hammerjs';
 import {AlbumComponent} from './album/album.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatTabsModule} from '@angular/material';
+import {MatSelectModule, MatTabsModule} from '@angular/material';
+import {GallerieDetailComponent} from './gallerie-detail/gallerie-detail.component';
 
 registerLocaleData(localeDe);
 
@@ -35,7 +36,8 @@ registerLocaleData(localeDe);
     LinksComponent,
     KontaktComponent,
     JoComponent,
-    AlbumComponent
+    AlbumComponent,
+    GallerieDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -43,6 +45,7 @@ registerLocaleData(localeDe);
     AppRoutingModule,
     HttpClientModule,
     MatTabsModule,
+    MatSelectModule,
     NgxGalleryModule
   ],
   providers: [

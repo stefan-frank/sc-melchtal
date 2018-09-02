@@ -9,7 +9,8 @@ const DEFAULT_GALLERY_OPTIONS: NgxGalleryOptions[] = [{
   imageAutoPlay: false,
   imageSwipe: true,
   imageAutoPlayInterval: 5001,
-  thumbnailsColumns: 5
+  thumbnailsColumns: 5,
+  thumbnails: false
 }];
 
 export class Album {

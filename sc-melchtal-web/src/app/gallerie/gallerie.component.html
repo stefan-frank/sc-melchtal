@@ -1,6 +1,6 @@
 <h2 id="toptitle">Gallerie</h2>
 <div id="text">
-  <mat-tab-group>
+  <!--mat-tab-group>
     <div *ngFor="let gallery of library.galleries()">
       <mat-tab label="{{gallery.year}}">
         <div *ngFor="let album of gallery.albums">
@@ -8,13 +8,27 @@
         </div>
       </mat-tab>
     </div>
-  </mat-tab-group>
+  </mat-tab-group-->
+
   <!--div *ngFor="let gallery of library.galleries()">
     <div>
-      <h2>{{gallery.year}}</h2>
+      <h3>{{gallery.year}}</h3>
       <div *ngFor="let album of gallery.albums">
         <app-album [album]="album"></app-album>
       </div>
+      <br/>
+      <br/>
     </div>
   </div-->
+
+  <mat-form-field>
+    <mat-select [(value)]="selectedGallery">
+      <mat-option *ngFor="let gallery of galleries" [value]="gallery">{{gallery.year}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <div>
+    <app-gallerie-detail [gallery]="selectedGallery"></app-gallerie-detail>
+    <br/>
+    <br/>
+  </div>
 </div>
