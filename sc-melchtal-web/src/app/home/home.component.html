@@ -2,16 +2,15 @@
   Willkommen beim Ski- und Wanderclub Melchtal
 </h2>
 <div id="text">
-
-  <div *ngIf="showNews" id="home_news">
-    <div class="label1">
-      {{news_title}}
-    </div>
-    <p ng-bind-html="news_description">
-    </p>
-  </div>
-
   <div id="hometop">
+
+    <div *ngFor="let newsItem of news" id="home_news">
+      <div class="label1">
+        {{newsItem.title}}
+      </div>
+      <p [innerHTML]="newsItem.text"></p>
+      <a href="{{newsItem.url}}">{{newsItem.filename}}</a>
+    </div>
 
     <div class="label1">
       Skiclub Stirnbänder

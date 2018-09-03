@@ -12,7 +12,7 @@ body {
 
 /* Achtung bei �nderungen von ul, li - wird f�r Navigation aktiv */
 * {
-  padding: 0; /* Abst�nde entfernen, Opera hack */
+  padding: 0;
   margin: 0;
 }
 
@@ -146,31 +146,6 @@ img {
   top: -45px;
   left: 612px;
   width: 200px;
-}
-
-#home_news {
-  padding-bottom: 30px;
-}
-
-#hometop {
-
-}
-
-#homeleft {
-  float: left;
-  width: 240px;
-}
-
-#homeleft li {
-  padding-left: 0em;
-  margin-left: 1.5em;
-  margin-top: 3px;
-  line-height: normal;
-}
-
-#homeright {
-  float: right;
-  width: 240px;
 }
 
 .col_left {

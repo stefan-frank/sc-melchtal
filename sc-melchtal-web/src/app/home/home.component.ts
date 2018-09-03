@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ContentfulService} from '../contentful.service';
 import {Entry} from 'contentful';
 import {NgxGalleryAnimation, NgxGalleryImage, NgxGalleryOptions} from 'ngx-gallery';
+import {News} from "./News";
 
 @Component({
   selector: 'app-home',
@@ -12,9 +13,8 @@ export class HomeComponent implements OnInit {
 
   galleryOptions: NgxGalleryOptions[];
   galleryImages: NgxGalleryImage[];
-  news_title = 'empty';
-  showNews = false;
   eventsInFuture: Entry<any>[] = [];
+  news: News[] = [];
 
   constructor(
     private contentfulService: ContentfulService,
@@ -23,6 +23,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.contentfulService.getEventsInFuture({order: 'fields.dateFrom'}).then(ereignisse => this.eventsInFuture = ereignisse);
+    this.contentfulService.getNews().then(news => this.news = news);
 
     this.galleryOptions = [
       {
