@@ -20,7 +20,6 @@ import 'hammerjs';
 import {AlbumComponent} from './album/album.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatSelectModule, MatTabsModule} from '@angular/material';
-import {GallerieDetailComponent} from './gallerie-detail/gallerie-detail.component';
 
 registerLocaleData(localeDe);
 
@@ -36,8 +35,7 @@ registerLocaleData(localeDe);
     LinksComponent,
     KontaktComponent,
     JoComponent,
-    AlbumComponent,
-    GallerieDetailComponent
+    AlbumComponent
   ],
   imports: [
     BrowserModule,

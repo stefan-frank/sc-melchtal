@@ -52,7 +52,7 @@ img {
 #top {
   width: 760px;
   height: 130px;
-  background: url("http://www.sc-melchtal.ch/assets-static-img/scm-p1.png") no-repeat;
+  background: url("assets/scm-p1.png") no-repeat;
 }
 
 #topscmtext {
@@ -95,7 +95,7 @@ img {
 #main {
   width: 760px;
   color: #222;
-  background: #fff url("http://www.sc-melchtal.ch/assets-static-img/scm-p2.png") repeat-y;
+  background: #fff url("assets/scm-p2.png") repeat-y;
 }
 
 #menu {
@@ -138,7 +138,7 @@ img {
 #foot {
   width: 760px;
   height: 50px;
-  background: url("http://www.sc-melchtal.ch/assets-static-img/scm-p3.png") no-repeat;
+  background: url("assets/scm-p3.png") no-repeat;
 }
 
 #footgraph {

@@ -38,29 +38,29 @@ export class HomeComponent implements OnInit {
 
     this.galleryImages = [
       {
-        small: 'http://www.sc-melchtal.ch/assets-static-img/stirnband/stirnband-beispiele.jpeg',
-        medium: 'http://www.sc-melchtal.ch/assets-static-img/stirnband/stirnband-beispiele.jpeg',
-        big: 'http://www.sc-melchtal.ch/assets-static-img/stirnband/stirnband-beispiele.jpeg'
+        small: 'assets-static-img/stirnband/stirnband-beispiele.jpeg',
+        medium: 'assets-static-img/stirnband/stirnband-beispiele.jpeg',
+        big: 'assets-static-img/stirnband/stirnband-beispiele.jpeg'
       },
       {
-        small: 'http://www.sc-melchtal.ch/assets-static-img/stirnband/farb-beispiel-anthrazit.jpeg',
-        medium: 'http://www.sc-melchtal.ch/assets-static-img/stirnband/farb-beispiel-anthrazit.jpeg',
-        big: 'http://www.sc-melchtal.ch/assets-static-img/stirnband/farb-beispiel-anthrazit.jpeg'
+        small: 'assets-static-img/stirnband/farb-beispiel-anthrazit.jpeg',
+        medium: 'assets-static-img/stirnband/farb-beispiel-anthrazit.jpeg',
+        big: 'assets-static-img/stirnband/farb-beispiel-anthrazit.jpeg'
       },
       {
-        small: 'http://www.sc-melchtal.ch/assets-static-img/stirnband/farb-beispiel-hellviolett.jpeg',
-        medium: 'http://www.sc-melchtal.ch/assets-static-img/stirnband/farb-beispiel-hellviolett.jpeg',
-        big: 'http://www.sc-melchtal.ch/assets-static-img/stirnband/farb-beispiel-hellviolett.jpeg'
+        small: 'assets-static-img/stirnband/farb-beispiel-hellviolett.jpeg',
+        medium: 'assets-static-img/stirnband/farb-beispiel-hellviolett.jpeg',
+        big: 'assets-static-img/stirnband/farb-beispiel-hellviolett.jpeg'
       },
       {
-        small: 'http://www.sc-melchtal.ch/assets-static-img/stirnband/farb-beispiel-pink.jpeg',
-        medium: 'http://www.sc-melchtal.ch/assets-static-img/stirnband/farb-beispiel-pink.jpeg',
-        big: 'http://www.sc-melchtal.ch/assets-static-img/stirnband/farb-beispiel-pink.jpeg'
+        small: 'assets-static-img/stirnband/farb-beispiel-pink.jpeg',
+        medium: 'assets-static-img/stirnband/farb-beispiel-pink.jpeg',
+        big: 'assets-static-img/stirnband/farb-beispiel-pink.jpeg'
       },
       {
-        small: 'http://www.sc-melchtal.ch/assets-static-img/stirnband/farb-beispiel-türkisblau.jpeg',
-        medium: 'http://www.sc-melchtal.ch/assets-static-img/stirnband/farb-beispiel-türkisblau.jpeg',
-        big: 'http://www.sc-melchtal.ch/assets-static-img/stirnband/farb-beispiel-türkisblau.jpeg'
+        small: 'assets-static-img/stirnband/farb-beispiel-türkisblau.jpeg',
+        medium: 'assets-static-img/stirnband/farb-beispiel-türkisblau.jpeg',
+        big: 'assets-static-img/stirnband/farb-beispiel-türkisblau.jpeg'
       },
     ];
   }

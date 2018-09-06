@@ -1,12 +1,12 @@
 <h2 id="toptitle">Gallerie</h2>
 <div id="text">
   <mat-form-field>
-    <mat-select [(value)]="selectedGallery">
-      <mat-option *ngFor="let gallery of galleries" [value]="gallery">{{gallery.year}}</mat-option>
+    <mat-select [(value)]="selectedYear">
+      <mat-option *ngFor="let year of years" [value]="year">{{year}}</mat-option>
     </mat-select>
   </mat-form-field>
-  <div>
-    <app-gallerie-detail [gallery]="selectedGallery"></app-gallerie-detail>
+  <div *ngIf="selectedGallery">
+    <app-album *ngFor="let albumId of selectedGallery.albumIds" [albumId]="albumId"></app-album>
     <br/>
     <br/>
   </div>
