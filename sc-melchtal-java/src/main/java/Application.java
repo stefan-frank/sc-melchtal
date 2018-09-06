@@ -9,48 +9,66 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Application {
 
+    public static final String ASSETS_IMG_GALLERY = "sc-melchtal-gallery/src/assets/img/gallery/";
     private static String PATH_TO_TEMPLATES = "sc-melchtal-java/src/main/resources/";
-    private static String TS_SOURCE_GALLERY_DIRECTORY = "sc-melchtal-web/src/app/gallerie/2018/generated/";
     private static DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy:MM:dd HH:mm:ss");
 
     public static void main(String[] args) {
         try {
-            Files.list(new File(TS_SOURCE_GALLERY_DIRECTORY).toPath()).forEach(file -> {
+            Files.list(new File(ASSETS_IMG_GALLERY).toPath()).forEach(file -> {
                 try {
-                    Files.delete(file);
+                    if (file.startsWith("gallery") && file.endsWith(".json")) {
+                        Logger.getAnonymousLogger().log(Level.INFO, "Deleting .." + file);
+                        Files.delete(file);
+                    }
                 } catch (IOException e) {
                     Logger.getAnonymousLogger().log(Level.SEVERE, "Error", e);
                 }
             });
-            List<Album> albums = new ArrayList<Album>();
+            List<Gallery> galleries = new ArrayList<Gallery>();
 
-            Path startingDir = new File("sc-melchtal-gallery/src/assets/img/gallery").toPath();
+            Path startingDir = new File(ASSETS_IMG_GALLERY).toPath();
             GalleryFileVisitor gfv = new GalleryFileVisitor();
             Files.walkFileTree(startingDir, gfv);
+
+            Map<Integer, Gallery> galleryMap = new TreeMap<Integer, Gallery>(new Comparator<Integer>() {
+                @Override
+                public int compare(Integer integer, Integer t1) {
+                    return t1.compareTo(integer);
+                }
+            });
 
             List<Path> dataJsonFiles = gfv.getDataJsonFiles();
             for (Path dataJsonFile : dataJsonFiles) {
                 InputStream is = new FileInputStream(dataJsonFile.toFile());
                 ObjectMapper mapper = new ObjectMapper();
-                List<ImageJson> imagesFromJson = mapper.readValue(is, new TypeReference<List<ImageJson>>() {
-                });
-                Album album = new Album();
-                LocalDateTime lowestDate = convert(imagesFromJson, album, dataJsonFile.getParent().getFileName());
-                album.setTitle(extractTitle(dataJsonFile));
-                album.setDate(lowestDate);
-                albums.add(album);
+                try {
+                    List<ImageJson> imagesFromJson = mapper.readValue(is, new TypeReference<List<ImageJson>>() {
+                    });
+                    LocalDateTime lowestDate = convert(imagesFromJson, dataJsonFile.getParent().getFileName());
+                    Integer year = Integer.valueOf(lowestDate.getYear());
+                    Gallery galleryOfYear = galleryMap.get(year);
+                    if (galleryOfYear == null) {
+                        galleryOfYear = new Gallery();
+                    }
+                    galleryOfYear.getAlbumIds().add(extractTitle(dataJsonFile));
+                    galleryOfYear.setDate(lowestDate);
+                    galleryMap.put(year, galleryOfYear);
 
-                writeAlbum(album);
+                    writeAlbum(galleryOfYear);
+                } catch (Exception e) {
+                    Logger.getAnonymousLogger().log(Level.SEVERE, "Error with file " + dataJsonFile, e);
+                }
+
             }
 
-            writeAlbumRegistry(albums);
+            writeGalleryAllYears(galleryMap);
 
         } catch (Exception e) {
             Logger.getAnonymousLogger().log(Level.SEVERE, "Error", e);
@@ -59,38 +77,36 @@ public class Application {
     }
 
     private static String extractTitle(Path dataJsonFile) {
-        String galleryDirectoryName = dataJsonFile.getParent().getFileName().toString();
-        return galleryDirectoryName.substring(5).replaceAll("_", " ").replaceAll("-", "");
+        return dataJsonFile.getParent().getFileName().toString();
     }
 
-    private static void writeAlbumRegistry(List<Album> albums) throws IOException {
+    private static void writeGalleryAllYears(Map<Integer, Gallery> galleries) throws IOException {
         Velocity.init();
         VelocityContext albumRegistryContext = new VelocityContext();
-        albumRegistryContext.put("albums", albums);
+        albumRegistryContext.put("galleries", galleries.values());
         Template templateRegistry = null;
-        templateRegistry = Velocity.getTemplate(PATH_TO_TEMPLATES + "AlbumRegistry.vm");
+        templateRegistry = Velocity.getTemplate(PATH_TO_TEMPLATES + "galleryYears.vm");
         StringWriter sw2 = new StringWriter();
-        FileWriter fw2 = new FileWriter(TS_SOURCE_GALLERY_DIRECTORY + "AlbumRegistry.ts");
+        FileWriter fw2 = new FileWriter(ASSETS_IMG_GALLERY + "galleryYears.json");
         templateRegistry.merge(albumRegistryContext, fw2);
         fw2.close();
     }
 
-    private static void writeAlbum(Album album) throws IOException {
+    private static void writeAlbum(Gallery gallery) throws IOException {
         Velocity.init();
         VelocityContext albumContext = new VelocityContext();
-        albumContext.put("album", album);
+        albumContext.put("gallery", gallery);
         Template template = null;
-        template = Velocity.getTemplate(PATH_TO_TEMPLATES + "Album.vm");
+        template = Velocity.getTemplate(PATH_TO_TEMPLATES + "gallery-year.vm");
         StringWriter sw = new StringWriter();
-        FileWriter fw = new FileWriter(TS_SOURCE_GALLERY_DIRECTORY + album.getFilename());
+        FileWriter fw = new FileWriter(ASSETS_IMG_GALLERY + "gallery-" + gallery.getYear() + ".json");
         template.merge(albumContext, fw);
         fw.close();
     }
 
-    private static LocalDateTime convert(List<ImageJson> imagesFromJson, Album album, Path fileName) {
+    private static LocalDateTime convert(List<ImageJson> imagesFromJson, Path fileName) {
         LocalDateTime lowestDate = LocalDateTime.now();
 
-        List<Image> images = album.getImages();
         for (ImageJson source : imagesFromJson) {
             if (source.getDate() != null) {
                 LocalDateTime date = LocalDateTime.parse(source.getDate(), df);
@@ -98,11 +114,6 @@ public class Application {
                     lowestDate = date;
                 }
             }
-            Image target = new Image();
-            target.setSmall(source.getThumbnail().getPath());
-            target.setMedium(source.getPreview().getPath());
-            target.setBig(source.getImage().getPath());
-            images.add(target);
         }
 
         LocalDateTime yearFromDirectory = LocalDateTime.parse(fileName.toString().substring(0, 4) + ":01:01 00:00:00", df);

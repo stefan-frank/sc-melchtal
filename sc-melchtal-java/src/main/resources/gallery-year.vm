@@ -1,25 +1,14 @@
-import { Gallery } from '../Gallery';
-
-export class $gallery.classname extends Gallery {
-title = '$gallery.title';
-date = new Date('$gallery.date');
-gallery = [
+{
+"year": $gallery.year,
+"albumIds": [
 #set ($first = true)
-#foreach($image in $gallery.images)
+#foreach($albumId in $gallery.albumIds)
     #if ($first == true)
+    "$albumId"
         #set ($first = false)
     #else
-    ,
+    ,"$albumId"
     #end
-{
-small: Gallery.BASE_URL + '$image.small',
-medium: Gallery.BASE_URL + '$image.medium',
-big: Gallery.BASE_URL + '$image.big'
-}
 #end
-];
-
-public toString() {
-return 'Gallery \"' + this.title + '\" (' + this.date.getFullYear() + ')';
-}
+]
 }

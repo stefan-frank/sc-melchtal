@@ -1,17 +1,12 @@
-import { Album } from '../Album';
-#foreach($album in $albums.iterator())
-import { $album.classname } from './$album.classname';
+[
+#set ($first = true)
+#foreach($gallery in $galleries)
+    #if ($first == true)
+        $gallery.year
+        #set ($first = false)
+    #else
+    ,$gallery.year
+    #end
 #end
+]
 
-export class AlbumRegistry {
-
-static loadAlbums(): Array
-<Album> {
-    const albumList = [
-#foreach($album in $albums.iterator())
-    new ${album.classname}(),
-#end
-    ];
-    return albumList;
-}
-}
