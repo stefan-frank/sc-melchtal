@@ -33,11 +33,14 @@ export class ContentfulService {
   }
 
   public getEventsInFuture(query?: object): Promise<Entry<any>[]> {
+    const today = new Date();
+    const yesterday = new Date();
+    yesterday.setDate(today.getDate() - 1);
     return this.cdaClient.getEntries(Object.assign(
       {
         content_type: CONFIG.contentTypeIds.ereignis,
         order: 'fields.dateFrom',
-        'fields.dateFrom[gte]': new Date()
+        'fields.dateFrom[gte]': yesterday
       }, query))
       .then(res => res.items);
   }
