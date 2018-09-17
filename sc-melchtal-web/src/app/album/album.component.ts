@@ -1,20 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {GalleryService} from '../gallery.service';
-import {NgxGalleryAnimation, NgxGalleryOptions} from 'ngx-gallery';
 import {environment} from '../../environments/environment';
 import {Album} from '../gallerie/2018/Album';
-
-const DEFAULT_GALLERY_OPTIONS: NgxGalleryOptions[] = [{
-  imageAnimation: NgxGalleryAnimation.Slide,
-  fullWidth: true,
-  breakpoint: 400,
-  imageInfinityMove: true,
-  imageAutoPlay: false,
-  imageSwipe: true,
-  imageAutoPlayInterval: 5001,
-  thumbnailsColumns: 5,
-  thumbnails: false
-}];
 
 const BASE_URL = environment.galleryBaseUrl;
 
@@ -33,7 +20,6 @@ export class AlbumComponent implements OnInit {
   constructor(private galleryService: GalleryService) {
     this.album = new Album();
     this.album.gallery = [];
-    this.album.options = DEFAULT_GALLERY_OPTIONS;
   }
 
   ngOnInit(): void {
@@ -46,7 +32,11 @@ export class AlbumComponent implements OnInit {
         });
       });
     });
-    this.album.title = this.albumId.substr(5, this.albumId.length - 5).replace(/_/, ' ');
+    let title: string = this.albumId.substr(5, this.albumId.length - 5);
+    while (title.includes('_')) {
+      title = title.replace('_', ' ');
+    }
+    this.album.title = title;
 
   }
 
