@@ -20,6 +20,9 @@ import 'hammerjs';
 import {AlbumComponent} from './album/album.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatSelectModule, MatTabsModule} from '@angular/material';
+// Cloudinary
+import {CloudinaryModule} from '@cloudinary/angular-5.x';
+import * as Cloudinary from 'cloudinary-core';
 
 registerLocaleData(localeDe);
 
@@ -44,7 +47,12 @@ registerLocaleData(localeDe);
     HttpClientModule,
     MatTabsModule,
     MatSelectModule,
-    NgxGalleryModule
+    NgxGalleryModule,
+    CloudinaryModule.forRoot(Cloudinary, {
+      cloud_name: 'sc-melchtal',
+      api_key: '347475193959746',
+      api_secret: 'hKSkFsXVCsSPtJ5TUL-CKnfIXCc'
+    })
   ],
   providers: [
     {provide: LOCALE_ID, useValue: 'de'}

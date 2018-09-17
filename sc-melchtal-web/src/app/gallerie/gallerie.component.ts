@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {GalleryService} from '../gallery.service';
 import {Gallery} from './2018/Gallery';
+import {Photo} from '../Photo';
+import {PhotoService} from '../photo.service';
 
 @Component({
   selector: 'app-gallerie',
@@ -11,11 +13,15 @@ export class GallerieComponent implements OnInit {
 
   public years: Number[];
 
-  constructor(private galleryService: GalleryService) {
-  }
+  private photos: Photo[];
   public selectedGallery: Gallery;
 
   private _selectedYear: Number;
+  private tags: string[];
+
+  constructor(private galleryService: GalleryService,
+              private photoService: PhotoService) {
+  }
 
   public get selectedYear(): Number {
     return this._selectedYear;
@@ -33,6 +39,10 @@ export class GallerieComponent implements OnInit {
         this.selectedYear = this.years[0];
       }
     });
+
+    this.photoService.getTags().subscribe(tags => this.tags = tags);
+
+    this.photoService.getPhotos('2018_Schneeschuhlaufen').subscribe(photos => this.photos = photos);
   }
 
 }
