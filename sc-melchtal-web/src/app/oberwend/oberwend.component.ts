@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {NgxGalleryAnimation, NgxGalleryImage, NgxGalleryOptions} from 'ngx-gallery';
+import {ContentfulService} from '../contentful.service';
+import {Vorstand} from '../Vorstand';
 
 @Component({
   selector: 'app-oberwend',
@@ -11,10 +13,14 @@ export class OberwendComponent implements OnInit {
   galleryOptions: NgxGalleryOptions[];
   galleryImages: NgxGalleryImage[];
 
-  constructor() {
+  vorstandsmitglieder: Vorstand[] = [];
+
+  constructor(private contentfulService: ContentfulService) {
   }
 
   ngOnInit() {
+
+    this.contentfulService.getVorstandByRole('Hüttenwart').then(res => this.vorstandsmitglieder.push(res));
 
     this.galleryOptions = [
       {

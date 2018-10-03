@@ -23,6 +23,7 @@ import {MatSelectModule, MatTabsModule} from '@angular/material';
 // Cloudinary
 import {CloudinaryModule} from '@cloudinary/angular-5.x';
 import * as Cloudinary from 'cloudinary-core';
+import { VorstandsmitgliedComponent } from './vorstandsmitglied/vorstandsmitglied.component';
 
 registerLocaleData(localeDe);
 
@@ -38,7 +39,8 @@ registerLocaleData(localeDe);
     LinksComponent,
     KontaktComponent,
     JoComponent,
-    AlbumComponent
+    AlbumComponent,
+    VorstandsmitgliedComponent
   ],
   imports: [
     BrowserModule,

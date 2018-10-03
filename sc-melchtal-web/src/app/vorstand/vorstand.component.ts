@@ -9,12 +9,12 @@ import {Vorstand} from '../Vorstand';
 })
 export class VorstandComponent implements OnInit {
 
-  vorstandsMitglieder: Vorstand[] = [];
+  vorstandsmitglieder: Vorstand[] = [];
   constructor(private contentfulService: ContentfulService) {
   }
 
   ngOnInit() {
-    this.contentfulService.getVorstand().then(vorstandsMitglieder => this.vorstandsMitglieder = vorstandsMitglieder);
+    this.contentfulService.getVorstand().then(vorstandsmitglieder => this.vorstandsmitglieder = vorstandsmitglieder);
   }
 
 }

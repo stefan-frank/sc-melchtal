@@ -2,19 +2,7 @@
   Vorstand
 </h2>
 <div id="text">
-  <div *ngFor="let vorstandsMitglied of vorstandsMitglieder">
-    <div style="display: inline-block; width: 200px; height: 200px">
-      <img src="{{vorstandsMitglied.avatar.url}}"
-           alt="{{vorstandsMitglied.role}}: {{vorstandsMitglied.nachname}} {{vorstandsMitglied.vorname}}"
-      />
-    </div>
-    <div style="display: inline-block; vertical-align: top"><strong>{{vorstandsMitglied.role}}</strong>
-      <div>{{vorstandsMitglied.nachname}} {{vorstandsMitglied.vorname}}</div>
-      <div>{{vorstandsMitglied.strasse}}</div>
-      <div>{{vorstandsMitglied.zipcode}} {{vorstandsMitglied.location}}</div>
-      <div *ngIf="vorstandsMitglied.mobile">Mobile: <a href="tel:{{vorstandsMitglied.mobile}}">{{vorstandsMitglied.mobile}}</a></div>
-      <div *ngIf="vorstandsMitglied.telefon">Festnetz: <a href="tel:{{vorstandsMitglied.telefon}}">{{vorstandsMitglied.telefon}}</a></div>
-      <div *ngIf="vorstandsMitglied.email">e-Mail: <a href="mailto:{{vorstandsMitglied.email}}">{{vorstandsMitglied.email}}</a></div>
-    </div>
+  <div *ngFor="let vorstandsmitglied of vorstandsmitglieder">
+    <app-vorstandsmitglied [vorstandsmitglied]="vorstandsmitglied"></app-vorstandsmitglied>
   </div>
 </div>

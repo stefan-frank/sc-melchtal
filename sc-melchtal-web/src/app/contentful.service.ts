@@ -49,6 +49,19 @@ export class ContentfulService {
       .then(res => res.items);
   }
 
+  public getVorstandByRole(role: string): Promise<Vorstand> {
+    return this.cdaClient.getEntries(Object.assign(
+      {
+        content_type: CONFIG.contentTypeIds.vorstand,
+        order: 'fields.order'
+      }, {
+        'fields.role': role
+      })).then(
+      res => {
+        return this.mapvorstandsmitglied(res.items[0], res);
+      });
+  }
+
   public getVorstand(query?: object): Promise<Vorstand[]> {
     return this.cdaClient.getEntries(Object.assign(
       {
@@ -56,23 +69,32 @@ export class ContentfulService {
         order: 'fields.order'
       }, query)).then(
         res => {
-          const vorstandsMitglieder = [];
-          res.items.forEach(item => {
-            const vorstandsMitglied = new Vorstand();
-            vorstandsMitglied.role = item.fields['role'];
-            vorstandsMitglied.nachname = item.fields['nachname'];
-            vorstandsMitglied.vorname = item.fields['vorname'];
-            vorstandsMitglied.email = item.fields['email'];
-            vorstandsMitglied.mobile = item.fields['mobile'];
-            vorstandsMitglied.telefon = item.fields['telefon'];
-            vorstandsMitglied.strasse = item.fields['strasse'];
-            vorstandsMitglied.zipcode = item.fields['zipcode'];
-            vorstandsMitglied.location = item.fields['location'];
-            vorstandsMitglied.avatar = mapAssetInfoToObject(item.fields['avatar'], res.includes['Asset']);
-            vorstandsMitglieder.push(vorstandsMitglied);
-          });
-          return vorstandsMitglieder;
+          return this.mapvorstandsmitglieder(res);
         });
+  }
+
+  private mapvorstandsmitglieder(res): Vorstand[] {
+    const vorstandsmitglieder = [];
+    res.items.forEach(item => {
+      const vorstandsmitglied = this.mapvorstandsmitglied(item, res);
+      vorstandsmitglieder.push(vorstandsmitglied);
+    });
+    return vorstandsmitglieder;
+  }
+
+  private mapvorstandsmitglied(item, res) {
+    const vorstandsmitglied = new Vorstand();
+    vorstandsmitglied.role = item.fields['role'];
+    vorstandsmitglied.nachname = item.fields['nachname'];
+    vorstandsmitglied.vorname = item.fields['vorname'];
+    vorstandsmitglied.email = item.fields['email'];
+    vorstandsmitglied.mobile = item.fields['mobile'];
+    vorstandsmitglied.telefon = item.fields['telefon'];
+    vorstandsmitglied.strasse = item.fields['strasse'];
+    vorstandsmitglied.zipcode = item.fields['zipcode'];
+    vorstandsmitglied.location = item.fields['location'];
+    vorstandsmitglied.avatar = mapAssetInfoToObject(item.fields['avatar'], res.includes['Asset']);
+    return vorstandsmitglied;
   }
 
   public getNews(query?: object): Promise<News[]> {
