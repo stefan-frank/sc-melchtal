@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {ContentfulService} from '../contentful.service';
+import {Vorstand} from '../Vorstand';
 
 @Component({
   selector: 'app-vorstand',
@@ -7,10 +9,12 @@ import {Component, OnInit} from '@angular/core';
 })
 export class VorstandComponent implements OnInit {
 
-  constructor() {
+  vorstandsMitglieder: Vorstand[] = [];
+  constructor(private contentfulService: ContentfulService) {
   }
 
   ngOnInit() {
+    this.contentfulService.getVorstand().then(vorstandsMitglieder => this.vorstandsMitglieder = vorstandsMitglieder);
   }
 
 }
