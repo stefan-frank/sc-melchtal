@@ -19,8 +19,10 @@ export class GallerieComponent implements OnInit {
   private _selectedYear: Number;
   private tags: string[];
 
-  constructor(private galleryService: GalleryService,
-              private photoService: PhotoService) {
+  constructor(
+//    private photoService: PhotoService,
+    private galleryService: GalleryService
+  ) {
   }
 
   public get selectedYear(): Number {
@@ -40,9 +42,9 @@ export class GallerieComponent implements OnInit {
       }
     });
 
-    this.photoService.getTags().subscribe(tags => this.tags = tags);
+//    this.photoService.getTags().subscribe(tags => this.tags = tags);
 
-    this.photoService.getPhotos('2018_Schneeschuhlaufen').subscribe(photos => this.photos = photos);
+//    this.photoService.getPhotos('2018_Schneeschuhlaufen').subscribe(photos => this.photos = photos);
   }
 
 }
