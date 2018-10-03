@@ -1,4 +1,4 @@
-import {Assett} from './Assett';
+import {Asset} from './Asset';
 
 export class Vorstand {
   public role: string;
@@ -10,5 +10,5 @@ export class Vorstand {
   public strasse: string;
   public zipcode: string;
   public location: string;
-  public avatar: Assett;
+  public avatar: Asset;
 }

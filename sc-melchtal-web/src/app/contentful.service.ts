@@ -2,8 +2,7 @@ import {Injectable} from '@angular/core';
 import {createClient, Entry} from 'contentful';
 import {News} from './home/News';
 import {Vorstand} from './Vorstand';
-import {v} from "@angular/core/src/render3";
-import {Assett} from "./Assett";
+import {Asset} from './Asset';
 
 const CONFIG = {
   space: '56vs0juzkteh',
@@ -82,7 +81,7 @@ export class ContentfulService {
     return vorstandsmitglieder;
   }
 
-  private mapvorstandsmitglied(item, res) {
+  private mapvorstandsmitglied(item, res): Vorstand {
     const vorstandsmitglied = new Vorstand();
     vorstandsmitglied.role = item.fields['role'];
     vorstandsmitglied.nachname = item.fields['nachname'];
@@ -107,17 +106,7 @@ export class ContentfulService {
           const newsItem = new News();
           newsItem.title = item.fields['title'];
           newsItem.text = item.fields['text'];
-          const fileAssetId = <string> item.fields['document']['sys']['id'];
-
-          const asset = <Array<any>> res.includes['Asset'];
-          asset.forEach(assetItem => {
-            const assetId = <string> assetItem['sys']['id'];
-            if (assetId === fileAssetId) {
-              newsItem.filename = assetItem['fields']['file']['fileName'];
-              newsItem.url = assetItem['fields']['file']['url'];
-              newsItem.contentType = assetItem['fields']['file']['contentType'];
-            }
-          });
+          newsItem.attachement = mapAssetInfoToObject(item.fields['document'], res.includes['Asset']);
           news.push(newsItem);
         });
         return news;
@@ -125,19 +114,16 @@ export class ContentfulService {
   }
 }
 
-function mapAssetInfoToObject(item: any, asset: Array<any>): Assett {
-  const assett = new Assett();
-  console.log('mapAssetInfoToObject - 0: ' + item.toString());
+function mapAssetInfoToObject(item: any, assets: Array<any>): Asset {
+  const asset = new Asset();
   const fileAssetId = <string> item['sys']['id'];
-  console.log('mapAssetInfoToObject - 1');
-  asset.forEach(assetItem => {
+  assets.forEach(assetItem => {
     const assetId = <string> assetItem['sys']['id'];
     if (assetId === fileAssetId) {
-      assett.filename = assetItem['fields']['file']['fileName'];
-      assett.url = assetItem['fields']['file']['url'];
-      assett.contentType = assetItem['fields']['file']['contentType'];
+      asset.filename = assetItem['fields']['file']['fileName'];
+      asset.url = assetItem['fields']['file']['url'];
+      asset.contentType = assetItem['fields']['file']['contentType'];
     }
   });
-  console.log('mapAssetInfoToObject - 2');
-  return assett;
+  return asset;
 }
