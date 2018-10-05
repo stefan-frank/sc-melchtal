@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  galleryBaseUrl: 'http://localhost:4201/'
+  galleryBaseUrl: 'http://localhost:4201/',
+  contentfulApiKey: '076973e49c190bc4fa3a8dea02b3ee08a223f4166ba8de1ba5456bea6e42df86'
 };
 
 /*

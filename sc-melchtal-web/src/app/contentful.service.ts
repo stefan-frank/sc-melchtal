@@ -3,10 +3,11 @@ import {createClient, Entry} from 'contentful';
 import {News} from './home/News';
 import {Vorstand} from './Vorstand';
 import {Asset} from './Asset';
+import {environment} from '../environments/environment';
 
 const CONFIG = {
   space: '56vs0juzkteh',
-  accessToken: '076973e49c190bc4fa3a8dea02b3ee08a223f4166ba8de1ba5456bea6e42df86',
+  accessToken: environment.contentfulApiKey,
 
   contentTypeIds: {
     ereignis: 'DeHXg4DzkkqWOMy6kA2ao',
@@ -98,7 +99,8 @@ export class ContentfulService {
 
   public getNews(query?: object): Promise<News[]> {
     return this.cdaClient.getEntries(Object.assign({
-      content_type: CONFIG.contentTypeIds.news
+      content_type: CONFIG.contentTypeIds.news,
+      order: '-fields.date'
     }, query)).then(
       res => {
         const news = [];
@@ -106,7 +108,9 @@ export class ContentfulService {
           const newsItem = new News();
           newsItem.title = item.fields['title'];
           newsItem.text = item.fields['text'];
-          newsItem.attachement = mapAssetInfoToObject(item.fields['document'], res.includes['Asset']);
+          if (item.fields['document'] != null) {
+            newsItem.attachement = mapAssetInfoToObject(item.fields['document'], res.includes['Asset']);
+          }
           news.push(newsItem);
         });
         return news;

@@ -5,28 +5,12 @@
   <div id="hometop">
 
     <div *ngFor="let newsItem of news" id="home_news">
-      <div class="label1">
+      <h3 class="label1">
         {{newsItem.title}}
-      </div>
+      </h3>
       <p [innerHTML]="newsItem.text"></p>
-      <a href="{{newsItem.attachement.url}}">{{newsItem.attachement.filename}}</a>
+      <a *ngIf="newsItem.attachement" href="{{newsItem.attachement.url}}">{{newsItem.attachement.filename}}</a>
     </div>
-
-    <div class="label1">
-      Skiclub Stirnbänder
-    </div>
-    <p>
-      Bitte füllt die Bestellformulare gemäss Anhang des Sommerprogramms aus. In der Bildergallerie könnt ihr die
-      unterschiedlichen Farben genauer betrachten.
-    </p>
-    &nbsp;
-    <br/>
-    <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
-
-    &nbsp;
-    <br/>
-    &nbsp;
-    <br/>
 
   </div>
 
