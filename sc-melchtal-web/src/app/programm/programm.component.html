@@ -1,16 +1,16 @@
 <h2 id="toptitle">
   Sommer-Programm
 </h2>
-<div *ngFor="let event of events" id="text">
+<div *ngFor="let event of ereignisse" id="text">
   <hr style="margin-bottom: 6px;"/>
   <div id="event_dates">
-    <div id="event_from">{{event.fields.dateFrom | date : 'fullDate'}}</div>
+    <div id="event_from">{{event.dateFrom | date : 'fullDate'}}</div>
     <div id="event_to">
-      <span *ngIf="event.fields.dateTo">- {{event.fields.dateTo | date : 'fullDate'}}</span>
+      <span *ngIf="event.dateTo">- {{event.dateTo | date : 'fullDate'}}</span>
     </div>
   </div>
-  <h2 id="event_title">{{event.fields.title}}</h2>
-  <p [innerHTML]="event.fields.description"></p>
-  <p [innerHTML]="event.fields.calendar"></p>
+  <h2 id="event_title">{{event.title}}</h2>
+  <p [innerHTML]="event.description"></p>
+  <p [innerHTML]="event.calendar"></p>
 </div>
 

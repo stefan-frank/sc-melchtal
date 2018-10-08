@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {ContentfulService} from '../contentful.service';
-import {Entry} from 'contentful';
+import {Store} from '@ngrx/store';
+import * as ProgrammActions from '../store/actions/programm.actions';
+import * as fromStore from '../store/reducers/index';
+import {Ereignis} from '../models/ereignis.model';
 
 @Component({
   selector: 'app-programm',
@@ -8,17 +10,16 @@ import {Entry} from 'contentful';
   styleUrls: ['./programm.component.css']
 })
 export class ProgrammComponent implements OnInit {
-
-
-  events: Entry<any>[] = [];
+  ereignisse: Ereignis[];
 
   constructor(
-    private contentfulService: ContentfulService
+    private store: Store<fromStore.State>
   ) {
   }
 
   ngOnInit() {
-    this.contentfulService.getEvents().then(ereignisse => this.events = ereignisse);
+    this.store.select(fromStore.getProgramm).subscribe(programm => this.ereignisse = programm.ereignisse);
+    this.store.dispatch(new ProgrammActions.LoadProgramm());
   }
 
 }

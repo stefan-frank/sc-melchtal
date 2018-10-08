@@ -4,6 +4,8 @@ import {News} from './home/News';
 import {Vorstand} from './Vorstand';
 import {Asset} from './Asset';
 import {environment} from '../environments/environment';
+import {Programm} from './models/programm.model';
+import {Ereignis} from "./models/ereignis.model";
 
 const CONFIG = {
   space: '56vs0juzkteh',
@@ -20,6 +22,7 @@ const CONFIG = {
   providedIn: 'root'
 })
 export class ContentfulService {
+
   private cdaClient = createClient({
     space: CONFIG.space,
     accessToken: CONFIG.accessToken
@@ -28,25 +31,26 @@ export class ContentfulService {
   constructor() {
   }
 
-  public getEvents(query?: object): Promise<Entry<any>[]> {
+  public getEvents(query?: object): Promise<Programm> {
     return this.cdaClient.getEntries(Object.assign({
       content_type: CONFIG.contentTypeIds.ereignis,
       order: 'fields.dateFrom'
     }, query))
-      .then(res => res.items);
-  }
-
-  public getEventsInFuture(query?: object): Promise<Entry<any>[]> {
-    const today = new Date();
-    const yesterday = new Date();
-    yesterday.setDate(today.getDate() - 1);
-    return this.cdaClient.getEntries(Object.assign(
-      {
-        content_type: CONFIG.contentTypeIds.ereignis,
-        order: 'fields.dateFrom',
-        'fields.dateFrom[gte]': yesterday
-      }, query))
-      .then(res => res.items);
+      .then(res => {
+        const programm = new Programm();
+        res.items.forEach(item => {
+          const ereignies = new Ereignis();
+          ereignies.title = item.fields['title'];
+          ereignies.description = item.fields['description'];
+          ereignies.dateFrom = new Date(item.fields['dateFrom']);
+          if (item.fields['dateTo'] != null) {
+            ereignies.dateTo = new Date(item.fields['dateTo']);
+          }
+          ereignies.calendar = item.fields['calendar'];
+          programm.ereignisse.push(ereignies);
+        });
+        return programm;
+      });
   }
 
   public getVorstandByRole(role: string): Promise<Vorstand> {

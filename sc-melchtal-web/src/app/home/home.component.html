@@ -20,10 +20,10 @@
       Die nächsten Anlässe
     </div>
     <ul>
-      <li *ngFor="let event of eventsInFuture">
-        {{event.fields.dateFrom | date : 'fullDate'}}
+      <li *ngFor="let event of ereignisse">
+        {{event.dateFrom | date : 'fullDate'}}
         <br/>
-        <strong>{{event.fields.title}}</strong>
+        <strong>{{event.title}}</strong>
       </li>
     </ul>
 

@@ -1,8 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {ContentfulService} from '../contentful.service';
-import {Entry} from 'contentful';
 import {NgxGalleryAnimation, NgxGalleryImage, NgxGalleryOptions} from 'ngx-gallery';
-import {News} from "./News";
+import {ContentfulService} from '../contentful.service';
+import {News} from './News';
+import {Ereignis} from '../models/ereignis.model';
+import {Store} from '@ngrx/store';
+import * as fromStore from '../store/reducers/index';
+import * as ProgrammActions from '../store/actions/programm.actions';
 
 @Component({
   selector: 'app-home',
@@ -13,16 +16,18 @@ export class HomeComponent implements OnInit {
 
   galleryOptions: NgxGalleryOptions[];
   galleryImages: NgxGalleryImage[];
-  eventsInFuture: Entry<any>[] = [];
+  ereignisse: Ereignis[];
   news: News[] = [];
 
   constructor(
-    private contentfulService: ContentfulService,
+    private store: Store<fromStore.State>,
+    private contentfulService: ContentfulService
   ) {
   }
 
   ngOnInit() {
-    this.contentfulService.getEventsInFuture({order: 'fields.dateFrom'}).then(ereignisse => this.eventsInFuture = ereignisse);
+    this.store.dispatch(new ProgrammActions.LoadProgramm());
+    this.store.select(fromStore.getProgramm).subscribe(programm => this.ereignisse = programm.ereignisseInZukunft());
     this.contentfulService.getNews().then(news => this.news = news);
 
     this.galleryOptions = [

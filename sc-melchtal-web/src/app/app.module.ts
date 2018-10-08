@@ -24,6 +24,14 @@ import {MatSelectModule, MatTabsModule} from '@angular/material';
 import {CloudinaryModule} from '@cloudinary/angular-5.x';
 import * as Cloudinary from 'cloudinary-core';
 import { VorstandsmitgliedComponent } from './vorstandsmitglied/vorstandsmitglied.component';
+import {StoreModule} from '@ngrx/store';
+import {reducer} from './store/reducers/programm.reducer';
+import {ProgrammEffects} from './store/effects/programm.effects';
+import { reducers, metaReducers } from './store/reducers';
+import { EffectsModule } from '@ngrx/effects';
+import { AppEffects } from './store/effects/app.effects';
+import {environment} from '../environments/environment';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 registerLocaleData(localeDe);
 
@@ -54,7 +62,11 @@ registerLocaleData(localeDe);
       cloud_name: 'sc-melchtal',
       api_key: '347475193959746',
       api_secret: 'hKSkFsXVCsSPtJ5TUL-CKnfIXCc'
-    })
+    }),
+    EffectsModule.forRoot([ProgrammEffects, AppEffects]),
+    StoreModule.forRoot(reducers, { metaReducers }),
+    !environment.production ? StoreDevtoolsModule.instrument() : [],
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
   ],
   providers: [
     {provide: LOCALE_ID, useValue: 'de'}
