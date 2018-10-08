@@ -21,7 +21,7 @@
     </div>
     <ul>
       <li *ngFor="let event of ereignisse">
-        {{event.dateFrom | date : 'fullDate'}}
+        {{event.dateFrom | date : 'fullDate'}} <span *ngIf="event.dateTo"> - {{event.dateTo | date : 'fullDate'}}</span>
         <br/>
         <strong>{{event.title}}</strong>
       </li>
