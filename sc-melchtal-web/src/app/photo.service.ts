@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Cloudinary} from '@cloudinary/angular-5.x';
 import {Observable} from 'rxjs';
-import {Photo} from './Photo';
+import {Photo} from './models/photo.model';
 import {map} from 'rxjs/operators';
 
 @Injectable({

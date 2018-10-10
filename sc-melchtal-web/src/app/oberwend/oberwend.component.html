@@ -12,7 +12,7 @@
     Kontakt für Anfragen zu Nutzung
   </h3>
   <br/>
-  <div *ngFor="let vorstandsmitglied of vorstandsmitglieder">
+  <div *ngIf="vorstandsmitglied">
     <app-vorstandsmitglied [vorstandsmitglied]="vorstandsmitglied"></app-vorstandsmitglied>
   </div>
   <br/>

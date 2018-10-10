@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {GalleryService} from '../gallery.service';
 import {Gallery} from './2018/Gallery';
-import {Photo} from '../Photo';
+import {Photo} from '../models/photo.model';
 import {PhotoService} from '../photo.service';
 
 @Component({

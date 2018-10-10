@@ -4,9 +4,8 @@ import {ContentfulService} from '../../contentful.service';
 import {from, Observable} from 'rxjs';
 import {Action, Store} from '@ngrx/store';
 import * as ProgrammActions from '../actions/programm.actions';
-import {concatMap, filter, map, mergeMap, switchMap, tap, withLatestFrom} from 'rxjs/operators';
+import {map, switchMap, withLatestFrom} from 'rxjs/operators';
 import * as fromStore from '../reducers/index';
-import {LoadProgramm} from '../actions/programm.actions';
 
 @Injectable()
 export class ProgrammEffects {
@@ -18,7 +17,7 @@ export class ProgrammEffects {
   @Effect()
   loadProgramm$: Observable<Action> = this.actions$.pipe(
     ofType(ProgrammActions.ProgrammActionTypes.LoadProgramm),
-    withLatestFrom(this.store.select(fromStore.getDataLoadedFromApi)),
+    withLatestFrom(this.store.select(fromStore.getProgrammDataLoadedFromApi)),
     map(([action, loaded]) => {
         if (!loaded) {
           return new ProgrammActions.LoadProgrammFromApi();

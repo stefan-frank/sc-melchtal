@@ -1,6 +1,6 @@
-import {Asset} from './Asset';
+import {Asset} from './asset.model';
 
-export class Vorstand {
+export class Vorstandsmitglied {
   public role: string;
   public nachname: string;
   public vorname: string;

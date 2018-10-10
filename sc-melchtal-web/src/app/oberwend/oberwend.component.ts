@@ -1,7 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {NgxGalleryAnimation, NgxGalleryImage, NgxGalleryOptions} from 'ngx-gallery';
-import {ContentfulService} from '../contentful.service';
-import {Vorstand} from '../Vorstand';
+import {Vorstand, VorstandsRole} from '../models/vorstand.model';
+import {Store} from '@ngrx/store';
+import * as fromStore from '../store/reducers/index';
+import {Vorstandsmitglied} from "../models/Vorstandsmitglied.model";
+import * as VorstandActions from "../store/actions/vorstand.actions";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-oberwend',
@@ -12,15 +16,14 @@ export class OberwendComponent implements OnInit {
 
   galleryOptions: NgxGalleryOptions[];
   galleryImages: NgxGalleryImage[];
+  
+  vorstandsmitglied: Vorstandsmitglied;
 
-  vorstandsmitglieder: Vorstand[] = [];
-
-  constructor(private contentfulService: ContentfulService) {
-  }
+  constructor(private store: Store<fromStore.State>) {}
 
   ngOnInit() {
-
-    this.contentfulService.getVorstandByRole('Hüttenwart').then(res => this.vorstandsmitglieder.push(res));
+    this.store.select(fromStore.getVorstand).subscribe(vorstand => this.vorstandsmitglied = vorstand.getVorstandByRole(VorstandsRole.HUETTENWART));
+    this.store.dispatch(new VorstandActions.LoadVorstand());
 
     this.galleryOptions = [
       {

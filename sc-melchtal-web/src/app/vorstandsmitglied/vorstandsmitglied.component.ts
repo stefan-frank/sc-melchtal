@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Vorstand} from '../Vorstand';
+import {Vorstandsmitglied} from '../models/Vorstandsmitglied.model';
 
 @Component({
   selector: 'app-vorstandsmitglied',
@@ -9,7 +9,7 @@ import {Vorstand} from '../Vorstand';
 export class VorstandsmitgliedComponent implements OnInit {
 
   @Input()
-  public vorstandsmitglied: Vorstand;
+  public vorstandsmitglied: Vorstandsmitglied;
 
   constructor() {
   }

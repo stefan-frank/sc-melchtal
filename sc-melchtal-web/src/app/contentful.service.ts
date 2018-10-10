@@ -1,11 +1,12 @@
 import {Injectable} from '@angular/core';
 import {createClient, Entry} from 'contentful';
-import {News} from './home/News';
-import {Vorstand} from './Vorstand';
-import {Asset} from './Asset';
+import {News} from './models/news.model';
+import {Vorstand} from './models/vorstand.model';
+import {Asset} from './models/asset.model';
 import {environment} from '../environments/environment';
 import {Programm} from './models/programm.model';
 import {Ereignis} from "./models/ereignis.model";
+import {Vorstandsmitglied} from "./models/Vorstandsmitglied.model";
 
 const CONFIG = {
   space: '56vs0juzkteh',
@@ -53,31 +54,20 @@ export class ContentfulService {
       });
   }
 
-  public getVorstandByRole(role: string): Promise<Vorstand> {
-    return this.cdaClient.getEntries(Object.assign(
-      {
-        content_type: CONFIG.contentTypeIds.vorstand,
-        order: 'fields.order'
-      }, {
-        'fields.role': role
-      })).then(
-      res => {
-        return this.mapvorstandsmitglied(res.items[0], res);
-      });
-  }
-
-  public getVorstand(query?: object): Promise<Vorstand[]> {
+  public getVorstand(query?: object): Promise<Vorstand> {
     return this.cdaClient.getEntries(Object.assign(
       {
         content_type: CONFIG.contentTypeIds.vorstand,
         order: 'fields.order'
       }, query)).then(
         res => {
-          return this.mapvorstandsmitglieder(res);
+          const vorstand = new Vorstand();
+          vorstand.vorstandsMitglieder = this.mapvorstandsmitglieder(res);
+          return vorstand;
         });
   }
 
-  private mapvorstandsmitglieder(res): Vorstand[] {
+  private mapvorstandsmitglieder(res): Vorstandsmitglied[] {
     const vorstandsmitglieder = [];
     res.items.forEach(item => {
       const vorstandsmitglied = this.mapvorstandsmitglied(item, res);
@@ -86,8 +76,8 @@ export class ContentfulService {
     return vorstandsmitglieder;
   }
 
-  private mapvorstandsmitglied(item, res): Vorstand {
-    const vorstandsmitglied = new Vorstand();
+  private mapvorstandsmitglied(item, res): Vorstandsmitglied {
+    const vorstandsmitglied = new Vorstandsmitglied();
     vorstandsmitglied.role = item.fields['role'];
     vorstandsmitglied.nachname = item.fields['nachname'];
     vorstandsmitglied.vorname = item.fields['vorname'];
