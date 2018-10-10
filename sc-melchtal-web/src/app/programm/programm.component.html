@@ -1,5 +1,5 @@
 <h2 id="toptitle">
-  Sommer-Programm
+  Das Winterprogramm 2018/2019
 </h2>
 <div *ngFor="let event of ereignisse" id="text">
   <hr style="margin-bottom: 6px;"/>
@@ -11,6 +11,9 @@
   </div>
   <h2 id="event_title">{{event.title}}</h2>
   <p [innerHTML]="event.description"></p>
-  <p [innerHTML]="event.calendar"></p>
+  <br/>
+  <p *ngIf="event.calendar">
+    <span [innerHTML]="event.calendar"></span> (Kalender-Eintrag erstellen)
+  </p>
 </div>
 
