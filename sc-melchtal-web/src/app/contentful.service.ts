@@ -48,6 +48,14 @@ export class ContentfulService {
             ereignies.dateTo = new Date(item.fields['dateTo']);
           }
           ereignies.calendar = item.fields['calendar'];
+          ereignies.anmeldung = item.fields['anmeldung'];
+          ereignies.auskunft = item.fields['auskunft'];
+          ereignies.contactByMail = item.fields['kontaktPerMail'];
+          ereignies.contactByMobile = item.fields['kontaktPerMobile'];
+          ereignies.contactByTelefon = item.fields['kontaktPerTelefon'];
+          if (item.fields['contact'] != null) {
+            ereignies.contact = this.mapvorstandsmitglied(item.fields['contact'], res);
+          }
           programm.ereignisse.push(ereignies);
         });
         return programm;
