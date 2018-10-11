@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {Angulartics2GoogleAnalytics} from 'angulartics2/ga';
+import {environment} from '../environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+  constructor(angulartics2GoogleAnalytics: Angulartics2GoogleAnalytics) {
+    if (environment.production) {
+      angulartics2GoogleAnalytics.startTracking();
+    }
+  }
 }

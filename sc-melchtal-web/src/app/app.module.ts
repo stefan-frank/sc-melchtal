@@ -33,6 +33,7 @@ import {environment} from '../environments/environment';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import {VorstandEffects} from './store/effects/vorstand.effects';
 import {NewsEffects} from './store/effects/news.effects';
+import {Angulartics2Module} from 'angulartics2';
 
 registerLocaleData(localeDe);
 
@@ -66,7 +67,8 @@ registerLocaleData(localeDe);
     }),
     EffectsModule.forRoot([ProgrammEffects, VorstandEffects, NewsEffects, AppEffects]),
     StoreModule.forRoot(reducers, { metaReducers }),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    Angulartics2Module.forRoot()
   ],
   providers: [
     {provide: LOCALE_ID, useValue: 'de'}
