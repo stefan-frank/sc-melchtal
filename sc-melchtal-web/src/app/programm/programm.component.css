@@ -19,3 +19,15 @@
   padding: 2px;
 }
 
+.material-icons {
+  vertical-align: middle;
+  padding-right: 10px;
+}
+
+#ereignis {
+  margin-bottom: 20px;
+}
+
+#description {
+  margin-bottom: 5px;
+}

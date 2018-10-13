@@ -7,7 +7,8 @@
   <div>{{vorstandsmitglied.nachname}} {{vorstandsmitglied.vorname}}</div>
   <div>{{vorstandsmitglied.strasse}}</div>
   <div>{{vorstandsmitglied.zipcode}} {{vorstandsmitglied.location}}</div>
-  <div *ngIf="vorstandsmitglied.mobile">Mobile: <a href="tel:{{vorstandsmitglied.mobile}}">{{vorstandsmitglied.mobile}}</a></div>
-  <div *ngIf="vorstandsmitglied.telefon">Festnetz: <a href="tel:{{vorstandsmitglied.telefon}}">{{vorstandsmitglied.telefon}}</a></div>
-  <div *ngIf="vorstandsmitglied.email">e-Mail: <a href="mailto:{{vorstandsmitglied.email}}">{{vorstandsmitglied.email}}</a></div>
+  <br/>
+  <div *ngIf="vorstandsmitglied.mobile"><mat-icon>phonelink_ring</mat-icon><a href="tel:{{vorstandsmitglied.mobile}}">{{vorstandsmitglied.mobile}}</a></div>
+  <div *ngIf="vorstandsmitglied.telefon"><mat-icon>phone</mat-icon><a href="tel:{{vorstandsmitglied.telefon}}">{{vorstandsmitglied.telefon}}</a></div>
+  <div *ngIf="vorstandsmitglied.email"><mat-icon>mail_outline</mat-icon><a href="mailto:{{vorstandsmitglied.email}}">{{vorstandsmitglied.email}}</a></div>
 </div>

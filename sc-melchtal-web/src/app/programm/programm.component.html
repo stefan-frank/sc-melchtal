@@ -1,37 +1,40 @@
 <h2 id="toptitle">
   Das Winterprogramm 2018/2019
 </h2>
-<div *ngFor="let event of ereignisse" id="text">
-  <hr style="margin-bottom: 6px;"/>
-  <div id="event_dates">
-    <div id="event_from">{{event.dateFrom | date : 'fullDate'}}</div>
-    <div id="event_to">
-      <span *ngIf="event.dateTo">- {{event.dateTo | date : 'fullDate'}}</span>
+<div id="text">
+  <div *ngFor="let event of ereignisse" id="ereignis">
+    <hr style="margin-bottom: 6px;"/>
+    <div id="event_dates">
+      <div id="event_from">{{event.dateFrom | date : 'fullDate'}}</div>
+      <div id="event_to">
+        <span *ngIf="event.dateTo">- {{event.dateTo | date : 'fullDate'}}</span>
+      </div>
+    </div>
+    <h2 id="event_title">{{event.title}}</h2>
+    <p [innerHTML]="event.description" id="description"></p>
+    <div *ngIf="(event.anmeldung || event.auskunft) && event.contact">
+      <div style="font-weight: bold">
+        <span *ngIf="event.anmeldung">Anmeldung</span>
+        <span *ngIf="event.anmeldung && event.auskunft"> & </span>
+        <span *ngIf="event.auskunft">Auskunft</span>
+        <span *ngIf="event.anmeldung || event.auskunft">: </span>
+      </div>
+      <div style="display: inline-block; width: 80px; height: 80px; margin-right: 10px; margin-bottom: 5px">
+        <img width="75px" height="75px" src="{{event.contact.avatar.url}}" alt="{{event.contact.nachname}} {{event.contact.vorname}}"
+        />
+      </div>
+      <div style="display: inline-block; vertical-align: top;">
+        <div>{{event.contact.nachname}} {{event.contact.vorname}}</div>
+        <div *ngIf="event.contactByMail && event.contact.email"><mat-icon>mail_outline</mat-icon><a href="mailto:{{event.contact.email}}">{{event.contact.email}}</a></div>
+        <div *ngIf="event.contactByMobile && event.contact.mobile"><mat-icon>phonelink_ring</mat-icon><a href="tel:{{event.contact.mobile}}">{{event.contact.mobile}}</a></div>
+        <div *ngIf="event.contactByTelefon && event.contact.telefon"><mat-icon>phone</mat-icon><a href="tel:{{event.contact.telefon}}">{{event.contact.telefon}}</a></div>
+      </div>
+    </div>
+    <div *ngIf="event.calendar">
+      <b>Kalender-Eintrag:</b>
+      <div [innerHTML]="event.calendar"></div>
     </div>
   </div>
-  <h2 id="event_title">{{event.title}}</h2>
-  <p [innerHTML]="event.description"></p>
-  <br/>
-  <div *ngIf="(event.anmeldung || event.auskunft) && event.contact">
-    <div style="font-weight: bold">
-      <span *ngIf="event.anmeldung">Anmeldung</span>
-      <span *ngIf="event.anmeldung && event.auskunft"> & </span>
-      <span *ngIf="event.auskunft">Auskunft</span>
-      <span *ngIf="event.anmeldung || event.auskunft">: </span>
-    </div>
-    <div style="display: inline-block; width: 50px; height: 50px; margin-right: 10px; margin-bottom: 20px">
-      <img width="50px" height="50px" src="{{event.contact.avatar.url}}" alt="{{event.contact.nachname}} {{event.contact.vorname}}"
-    />
-    </div>
-    <div style="display: inline-block; vertical-align: top;">
-      <span>{{event.contact.nachname}} {{event.contact.vorname}}</span>
-      <div *ngIf="event.contactByMail && event.contact.email">Mail: <a href="mailto:{{event.contact.email}}">{{event.contact.email}}</a></div>
-      <div *ngIf="event.contactByMobile && event.contact.mobile">Mobile: <a href="tel:{{event.contact.mobile}}">{{event.contact.mobile}}</a></div>
-      <div *ngIf="event.contactByTelefon && event.contact.telefon">Festnetz: <a href="tel:{{event.contact.telefon}}">{{event.contact.telefon}}</a></div>
-    </div>
-  </div>
-  <p *ngIf="event.calendar">
-    <span [innerHTML]="event.calendar"></span> (Kalender-Eintrag erstellen)
-  </p>
 </div>
+
 

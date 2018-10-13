@@ -113,6 +113,11 @@ export class ContentfulService {
           if (item.fields['document'] != null) {
             newsItem.attachement = mapAssetInfoToObject(item.fields['document'], res.includes['Asset']);
           }
+          if (item.fields['author'] != null) {
+            newsItem.author = this.mapvorstandsmitglied(item.fields['author'], res);
+          }
+          newsItem.created = new Date(item.sys.createdAt);
+          newsItem.updated = new Date(item.sys.updatedAt);
           news.push(newsItem);
         });
         return news;

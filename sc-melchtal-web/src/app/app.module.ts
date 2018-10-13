@@ -19,7 +19,7 @@ import {NgxGalleryModule} from 'ngx-gallery';
 import 'hammerjs';
 import {AlbumComponent} from './album/album.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatSelectModule, MatTabsModule} from '@angular/material';
+import {MatIconModule, MatSelectModule, MatTabsModule} from '@angular/material';
 // Cloudinary
 import {CloudinaryModule} from '@cloudinary/angular-5.x';
 import * as Cloudinary from 'cloudinary-core';
@@ -59,6 +59,7 @@ registerLocaleData(localeDe);
     HttpClientModule,
     MatTabsModule,
     MatSelectModule,
+    MatIconModule,
     NgxGalleryModule,
     CloudinaryModule.forRoot(Cloudinary, {
       cloud_name: 'sc-melchtal',
