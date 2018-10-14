@@ -1,79 +1,64 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div id="boundingbox">
+<div class="container" style="background-color: ghostwhite">
+  <div class="cotainer">
+    <nav class="navbar navbar-expand-lg navbar-dark rounded-top">
+      <a class="navbar-brand" [routerLink]="['/home']" (click)="navbarCollapsed = true"><img src="assets/logo-30.png" width="30" height="30" alt="" /></a>
+      <h1>SC-Melchtal</h1>
+      <button class="navbar-toggler" type="button" (click)="navbarCollapsed = !navbarCollapsed" [attr.aria-expanded]="!navbarCollapsed" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle Navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-  <div id="titlegraph">
-    <img src="assets-static-img/scm_ptitle1.png" width="215" height="215" alt=""/>
-  </div>
+      <div [ngbCollapse]="navbarCollapsed" class="navbar-collapse" id="navbarContent">
+        <ul class="navbar nav mr-auto justify-content-md-center">
+          <li class="nav-item" [routerLinkActive]="['active']">
+            <a class="nav-link" [routerLink]="['/home']" (click)="navbarCollapsed = true">Home</a>
+          </li>
+          <li class="nav-item" [routerLinkActive]="['active']">
+            <a class="nav-link" [routerLink]="['/programm']" (click)="navbarCollapsed = true">Programm</a>
+          </li>
+          <li class="nav-item" [routerLinkActive]="['active']">
+            <a class="nav-link" [routerLink]="['/gallerie']" (click)="navbarCollapsed = true">Fotos</a>
+          </li>
+          <li class="nav-item" [routerLinkActive]="['active']">
+            <a class="nav-link" [routerLink]="['/jo']" (click)="navbarCollapsed = true">JO</a>
+          </li>
+          <li class="nav-item" [routerLinkActive]="['active']">
+            <a class="nav-link" [routerLink]="['/oberwend']" (click)="navbarCollapsed = true">Oberwend</a>
+          </li>
+          <li class="nav-item" [routerLinkActive]="['active']">
+            <a class="nav-link" [routerLink]="['/vorstand']" (click)="navbarCollapsed = true">Vorstand</a>
+          </li>
+          <li class="nav-item" [routerLinkActive]="['active']">
+            <a class="nav-link" [routerLink]="['/archiv']" (click)="navbarCollapsed = true">Archiv</a>
+          </li>
+          <li class="nav-item" [routerLinkActive]="['active']">
+            <a class="nav-link" [routerLink]="['/kontakt']" (click)="navbarCollapsed = true">Kontakt</a>
+          </li>
+          <li class="nav-item" [routerLinkActive]="['active']">
+            <a class="nav-link" [routerLink]="['/links']" (click)="navbarCollapsed = true">Links</a>
+          </li>
 
-  <div id="top">
-    <h1 id="topscmtext">
-      Ski- und Wanderclub Melchtal
-    </h1>
-    <div id="topmenu">
-      <table class="menu">
-        <tr>
-          <td style="width: 92px; text-align: center;"><a routerLink="/home">HOME</a></td>
-          <td style="width: 92px; text-align: center;"><a routerLink="/gallerie">FOTOS</a></td>
-          <td style="width: 92px; text-align: center;"><a routerLink="/archiv">ARCHIV</a></td>
-          <td style="width: 92px; text-align: center;"><a routerLink="/links">LINKS</a></td>
-          <td style="width: 92px; text-align: center;"><a routerLink="/kontakt">KONTAKT</a></td>
-        </tr>
-      </table>
-    </div>
-  </div>
-
-  <div id="main">
-    <div id="menu">
-      <div id="nav">
-        <ul>
-          <li>
-            <a routerLink="/home" class="active"><span class="navdot">&#8226;&nbsp;</span>Home</a>
-          </li>
-          <li>
-            <a routerLink="/programm"><span class="navdot">&#8226;&nbsp;</span>Programm</a>
-          </li>
-          <li>
-            <a routerLink="/jo"><span class="navdot">&#8226;&nbsp;</span>JO</a>
-          </li>
-          <li>
-            <a routerLink="/vorstand"><span class="navdot">&#8226;&nbsp;</span>Vorstand</a>
-          </li>
-          <li>
-            <a routerLink="/oberwend"><span class="navdot">&#8226;&nbsp;</span>Oberwend</a>
-          </li>
         </ul>
       </div>
-
-      <p>
-        &nbsp;
-        <br/>
-        &nbsp;
-      </p>
-
-      <div id="menutxt1">
-        <strong style="color: #F30;">Ranglisten</strong>
-        <!--br />
-                    &ndash; <a id="rangliste_jo_2016" href="" type="application/pdf">Obwaldner JO-Meisterschaft 2016</a-->
-        <br/>
-        &ndash; <a id="rangliste_clubrennen_2018"
-                   href="http://www.sc-melchtal.ch/dokumente/2018_SC_Melchtal_Rangliste_Klubrennen.pdf"
-                   type="application/pdf">Clubrennen 2018</a>
-        <br/>
-        &ndash; <a id="rangliste_schuelerrennen_2018"
-                   href="http://www.sc-melchtal.ch/dokumente/2018_SC_Melchtal_Rangliste_Kinderrennen.pdf"
-                   type="application/pdf">Schülerrennen 2018</a>
-
-      </div>
-
-    </div>
-
-    <router-outlet></router-outlet>
-
+    </nav>
   </div>
+  <img class="img-fluid rounded-bottom" src="assets/scm-panorama-1200.jpg"/>
 
-  <div id="foot">
-    <div id="footgraph">
-      <img src="assets-static-img/scm-logo.png" width="207" height="200" alt=""/>
+
+  <!--div class="row" id="titlegraph">
+    <img src="assets-static-img/scm_ptitle1.png" width="215" height="215" alt=""/>
+  </div-->
+
+  <!--div class="row justify-content-md-center" id="top">
+    <div class="col-md-auto">
+      <h1 id="topscmtext">
+        Ski- und Wanderclub Melchtal
+      </h1>
+    </div>
+  </div-->
+  <router-outlet></router-outlet>
+  <div class="row justify-content-md-center">
+    <div class="col-md-auto align-content-md-center">
+      <img id="footer-img" class="mx-auto d-block" src="assets/logo-200.png" alt=""/>
     </div>
   </div>
 

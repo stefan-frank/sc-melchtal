@@ -1,90 +1,100 @@
-<h2 id="toptitle">
-  Willkommen beim Ski- und Wanderclub Melchtal
-</h2>
-<div id="text">
-  <div id="hometop">
+<div class="row justify-content-md-center">
+  <div class="col-md-auto">
+    <h2 class="text-center">
+      Willkommen beim Ski- und Wanderclub Melchtal
+    </h2>
+  </div>
+</div>
+<div class="row justify-content-md-center">
+  <div class="col-md-12">
+
     <div *ngFor="let newsItem of news$ | async" id="home_news">
-      <div class="label1">
-        <h3>{{newsItem.title}}</h3>
-        <table class="smallfont">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="text-left" style="display: inline-block">{{newsItem.title}}</h3><small class="text-muted float-right">Datum: {{newsItem.created | date : 'shortDate'}}</small></div>
+        <!--table class="smallfont">
           <tr>
-            <td>Erstellt: {{newsItem.created | date : 'shortDate'}}</td>
-            <td>Author: {{newsItem.author.nachname}} {{newsItem.author.vorname}} ({{newsItem.author.role}})</td>
-            <td>Zuletzt geändert: {{newsItem.updated | date : 'shortDate'}} </td>
+            <td>Erstellt: </td>
+
           </tr>
-        </table>
+        </table-->
+        <div class="card-body">
+          <p [innerHTML]="newsItem.text"></p>
+          <a class="card-link" *ngIf="newsItem.attachement" href="{{newsItem.attachement.url}}"><mat-icon>get_app</mat-icon> {{newsItem.attachement.filename}}</a>
+          <p class="card-text">
+            <small class="float-left text-muted">Author: {{newsItem.author.nachname}} {{newsItem.author.vorname}} ({{newsItem.author.role}})</small>
+            <small class="float-right text-muted">Zuletzt geändert: {{newsItem.updated | date : 'shortDate'}}</small>
+          </p>
+        </div>
       </div>
-      <p [innerHTML]="newsItem.text"></p>
-      <a *ngIf="newsItem.attachement" href="{{newsItem.attachement.url}}">{{newsItem.attachement.filename}}</a>
     </div>
-
+  </div>
+</div>
+<div class="row justify-content-md-center">
+  <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">Die nächsten Anlässe</div>
+        <ul class="list-group">
+          <li *ngFor="let event of ereignisse" class="list-group-item">
+            {{event.dateFrom | date : 'fullDate'}} <span *ngIf="event.dateTo"> - {{event.dateTo | date : 'fullDate'}}</span>
+            <br/>
+            <strong>{{event.title}}</strong>
+          </li>
+        </ul>
+        <div class="card-body">
+          <a [routerLink]="['/programm']" class="card-link">Detailangaben siehe Programm</a>
+        </div>
+    </div>
   </div>
 
-  <div id="homeleft">
+  <div class="col-md-6">
 
-    <div class="label1">
-      Die nächsten Anlässe
-    </div>
-    <ul>
-      <li *ngFor="let event of ereignisse">
-        {{event.dateFrom | date : 'fullDate'}} <span *ngIf="event.dateTo"> - {{event.dateTo | date : 'fullDate'}}</span>
-        <br/>
-        <strong>{{event.title}}</strong>
-      </li>
-    </ul>
-
-
-    <div class="smallfont">
-      Detailangaben siehe <a routerLink="/programm">Programm</a>
+    <div class="card">
+      <div class="card-header">
+        Fotogalerie
+      </div>
+      <div class="card-body">
+        <div class="card-text">
+          Fotos von Anlässen, Oberwend usw.
+        </div>
+        <a routerLink="/gallerie" class="card-link">Fotos</a>
+      </div>
     </div>
 
-    &nbsp;
-    <br/>
-    &nbsp;
-    <br/>
-
-  </div>
-
-  <div id="homeright">
-
-    <div class="label1">
-      Fotogalerie
-    </div>
-    Fotos von Anlässen, Oberwend usw.
-    <div class="smallfont">
-      Siehe <a routerLink="/gallerie">Fotos</a>
-    </div>
-    &nbsp;
-
-    <div class="label1">
-      Der Vorstand
-    </div>
-    Adressen und Fotos der Vorstands-Mitglieder
-    <div class="smallfont">
-      Siehe <a routerLink="/vorstand">Vorstand</a>
-    </div>
-    &nbsp;
-
-    <div class="label1">
-      Oberwend
-    </div>
-    Die Geschichte der Alphütte Oberwend
-    <div class="smallfont">
-      Siehe <a routerLink="/oberwend">Oberwend</a>
-    </div>
-    &nbsp;
-
-    <div class="label1">
-      Mitteilungen
-    </div>
-    Eine Mitteilung an den Ski- und Wanderclub Melchtal senden
-    <div class="smallfont">
-      Siehe <a routerLink="/kontakt">Kontakt</a>
+    <div class="card">
+      <div class="card-header">
+        Der Vorstand
+      </div>
+      <div class="card-body">
+        <div class="card-text">
+          Adressen und Fotos der Vorstands-Mitglieder
+        </div>
+        <a routerLink="/vorstand" class="card-link">Vorstand</a>
+      </div>
     </div>
 
-  </div>
+    <div class="card">
+      <div class="card-header">
+        Oberwend
+      </div>
+      <div class="card-body">
+        <div class="card-text">
+          Die Geschichte der Alphütte Oberwend
+        </div>
+        <a routerLink="/oberwend" class="card-link">Oberwend</a>
+      </div>
+    </div>
 
-  <div style="clear: both;">
-
+    <div class="card">
+      <div class="card-header">
+        Mitteilungen
+      </div>
+      <div class="card-body">
+        <div class="card-text">
+          Eine Mitteilung an den Ski- und Wanderclub Melchtal senden
+        </div>
+        <a routerLink="/kontakt" class="card-link">Kontakt</a>
+      </div>
+    </div>
   </div>
 </div>

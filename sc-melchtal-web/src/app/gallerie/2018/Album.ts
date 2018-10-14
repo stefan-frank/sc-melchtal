@@ -1,9 +1,10 @@
-import {NgxGalleryAnimation, NgxGalleryImage, NgxGalleryOptions} from 'ngx-gallery';
+import {NgxGalleryAnimation, NgxGalleryImage, NgxGalleryImageSize, NgxGalleryOptions} from 'ngx-gallery';
 import {environment} from '../../../environments/environment';
 
 const DEFAULT_GALLERY_OPTIONS: NgxGalleryOptions[] = [
   {
     imageAnimation: NgxGalleryAnimation.Slide,
+    width: '100%',
     fullWidth: false,
     imageInfinityMove: true,
     imageAutoPlay: false,
@@ -14,17 +15,19 @@ const DEFAULT_GALLERY_OPTIONS: NgxGalleryOptions[] = [
     thumbnailsColumns: 5,
     thumbnails: true
   }, {
-  imageAnimation: NgxGalleryAnimation.Slide,
-  fullWidth: true,
-  breakpoint: 400,
-  imageInfinityMove: true,
-  imageAutoPlay: false,
-  imageSwipe: true,
-  imageAutoPlayInterval: 5001,
+    imageAnimation: NgxGalleryAnimation.Slide,
+    width: '100%',
+    fullWidth: false,
+    imageSize: NgxGalleryImageSize.Cover,
+    breakpoint: 400,
+    imageInfinityMove: true,
+    imageAutoPlay: false,
+    imageSwipe: true,
+    imageAutoPlayInterval: 5001,
     previewForceFullscreen: true,
     previewSwipe: true,
-  thumbnailsColumns: 5,
-  thumbnails: false
+    thumbnailsColumns: 5,
+    thumbnails: false
 }];
 
 export class Album {

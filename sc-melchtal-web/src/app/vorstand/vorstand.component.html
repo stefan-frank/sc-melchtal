@@ -1,8 +1,12 @@
-<h2 id="toptitle">
-  Vorstand
-</h2>
-<div id="text">
-  <div *ngFor="let vorstandsmitglied of vorstandsmitglieder">
-    <app-vorstandsmitglied [vorstandsmitglied]="vorstandsmitglied"></app-vorstandsmitglied>
+<div class="row justify-content-md-center">
+  <div class="col-md-auto">
+    <h2 class="text-center">
+      Vorstand
+    </h2>
+  </div>
+</div>
+<div class="row justify-content-md-center">
+  <div class="col-md-6" *ngFor="let vorstandsmitglied of vorstandsmitglieder">
+    <app-vorstandsmitglied class="card" [vorstandsmitglied]="vorstandsmitglied"></app-vorstandsmitglied>
   </div>
 </div>

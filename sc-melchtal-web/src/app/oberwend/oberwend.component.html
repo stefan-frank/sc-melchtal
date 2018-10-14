@@ -1,103 +1,83 @@
-<h2 id="toptitle">
-  Alphütte Oberwend
-</h2>
-<div id="text">
+<div class="row justify-content-md-center">
+  <div class="col-md-auto col-sm-auto">
+    <h2 class="text-center">
+      Alphütte Oberwend
+    </h2>
+    <img src="assets/oberwend1.jpg" alt="Alphütte Oberwend" class="img-fluid"/>
+  </div>
+</div>
+<div class="row justify-content-md-center">
+  <div class="col-md-12">
+    <div class="card-deck">
+      <div class="card" *ngIf="vorstandsmitglied">
+        <app-vorstandsmitglied [vorstandsmitglied]="vorstandsmitglied"></app-vorstandsmitglied>
+      </div>
 
-  <img src="assets-static-img/oberwend/oberwend1.jpg" width="500" height="180"
-       alt="Alphütte Oberwend" class="phborder" style="margin-left: -3px;"/>
-  <br/>
-  <br/>
-  <br/>
-  <h3 class="label1">
-    Kontakt für Anfragen zu Nutzung
-  </h3>
-  <br/>
-  <div *ngIf="vorstandsmitglied">
-    <app-vorstandsmitglied [vorstandsmitglied]="vorstandsmitglied"></app-vorstandsmitglied>
+      <div class="card">
+        <div class="card-header">
+          Innenausstattung
+        </div>
+        <div class="card-body">
+          <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
+        </div>
+      </div>
+    </div>
   </div>
-  <br/>
-  <br/>
-  <h3 class="label1">
-    Innenausstattung der Alphütte Oberwend
-  </h3>
-  <div style="clear: both;">
-    &nbsp;
-  </div>
-  <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
-  <div style="clear: both;">
-    &nbsp;
-  </div>
-  <br/>
-  <br/>
-  <h3 class="label1">
-    Geschichte der Alphütte Oberwend
-  </h3>
-  <div style="clear: both;">
-    &nbsp;
-  </div>
-  Bis zum Jahr 1974 wurde die Alp Oberwend noch mit Rindern und Kühen bewirtschaftet.
-  Ab dem Sommer 1975 hat man das erste mal Schafe aufgetrieben und das ist bis heute so geblieben.
-  <br/>
-  &nbsp;
-  <br/>
-  <a
-    href="Javascript:FotoWindow('assets-static-img/oberwend/oberwend2b.jpg','500','350');"><img
-    src="assets-static-img/oberwend/oberwend2s.jpg" width="220" height="155" alt=""
-    class="thumbr"/></a>
-  Am 8.November 1982 wütete ein heftiger Föhnsturm in der Region, welcher sehr grossen Schaden an den Wäldern und an der
-  Alphütte Oberwend hinterliess.
-  Ein Neubau der Hütte wäre für die Alpgenossen Melchtal nicht tragbar gewesen.
-  Aus diesem Grund haben sich Initianten des Skiclubs Melchtal mit den Alpgenossen zusammengetan und über einen Neubau
-  der Oberwend getagt.
-  Nach einigem Hin und Her hat man sich auf den Bau der neuen Oberwend-Hütte festgelegt.
-  <br/>
-  &nbsp;
-  <br/>
-  <a
-    href="Javascript:FotoWindow('assets-static-img/oberwend/oberwend3b.jpg','500','350');"><img
-    src="assets-static-img/oberwend/oberwend3s.jpg" width="220" height="155" alt=""
-    class="thumbr"/></a>
-  Die Vorbereitungsarbeiten liefen ab März 1983 auf vollen Touren.
-  Es wurden Pläne gemacht, das Holz geschlagen und in die Sägerei gebracht.
-  Am 11.&nbsp;Juni&nbsp;1983 war es dann so weit: der alte Hüttenplatz konnte geräumt werden.
-  <br/>
-  &nbsp;
-  <br/>
-  Am 25. Juni 1983 haben die Bauarbeiten offiziell begonnen.
-  Jeden Tag waren 10 bis 15 Mann auf Oberwend und haben mit sehr viel Muskelkraft an der Hütte gearbeitet.
-  Maschinen hatte man nicht so wie im Tal zur Verfügung.
-  Das einzige grosse Transportmittel war ein Helikopter, der die ganzen Holzteile und anderes Baumaterial auf die
-  Baustelle brachte.
-  <br/>
-  &nbsp;
-  <br/>
-  <a
-    href="Javascript:FotoWindow('assets-static-img/oberwend/oberwend6b.jpg','500','350');"><img
-    src="assets-static-img/oberwend/oberwend6s.jpg" width="220" height="155" alt=""
-    class="thumbr"/></a>
-  Trotz der schweren Arbeit waren immer alle frohen Mutes. Es wurde auch einmal etwas mehr getrunken, als man brauchte,
-  aber nur nach Feierabend.
-  Schon nach dreiwöchiger Arbeit stand die Hütte im Rohbau da.
-  Die Ausbau- und Umgebungsarbeiten hat man dann mit Hochdruck vorangetrieben, so dass am 16.Oktober 1983 die Hütte
-  gesegnet und der verdiente Firstwii getrunken werden konnte.
-  <br/>
-  &nbsp;
-  <br/>
-  Die Arbeiten an der Hütte waren dann abgeschlossen.
-  In den letzten Jahren wurden aber schon wieder einige Sachen renoviert.
-  Zum Beispiel haben wir jetzt eine Solaranlage, welche mehr Licht in die Hütte bringt.
-  Auch die Wasserfassung wurde unter den Huetstock verlegt, damit es besseres Wasser in der Hütte hat.
-  <br/>
-  &nbsp;
-  <br/>
-  <a
-    href="Javascript:FotoWindow('assets-static-img/oberwend/oberwend7b.jpg','500','350');"><img
-    src="assets-static-img/oberwend/oberwend7s.jpg" width="220" height="155" alt=""
-    class="thumbr"/></a>
-  Zum Schluss möchten wir uns bedanken für all die geleisteten Arbeiten und hoffen, dass alle die sich in der Alphütte
-  Oberwend aufhalten, sie auch geniessen und die Hütte so verlassen, wie sie aufgefunden wurde.
-
-  <div style="clear: both;">
-    &nbsp;
+</div>
+<div class="row justify-content-md-center">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        Geschichte der Alphütte Oberwend
+      </div>
+      <div class="card-body">
+        <div class="card-text">
+          <p>
+            Bis zum Jahr 1974 wurde die Alp Oberwend noch mit Rindern und Kühen bewirtschaftet.
+            Ab dem Sommer 1975 hat man das erste mal Schafe aufgetrieben und das ist bis heute so geblieben.
+          </p>
+          <img src="assets-static-img/oberwend/oberwend2s.jpg"/>
+          <p>
+            Am 8.November 1982 wütete ein heftiger Föhnsturm in der Region, welcher sehr grossen Schaden an den Wäldern und an der
+            Alphütte Oberwend hinterliess.
+            Ein Neubau der Hütte wäre für die Alpgenossen Melchtal nicht tragbar gewesen.
+            Aus diesem Grund haben sich Initianten des Skiclubs Melchtal mit den Alpgenossen zusammengetan und über einen Neubau
+            der Oberwend getagt.
+            Nach einigem Hin und Her hat man sich auf den Bau der neuen Oberwend-Hütte festgelegt.</p>
+          <img src="assets-static-img/oberwend/oberwend3s.jpg"/>
+          <p>
+            Die Vorbereitungsarbeiten liefen ab März 1983 auf vollen Touren.
+            Es wurden Pläne gemacht, das Holz geschlagen und in die Sägerei gebracht.
+            Am 11.&nbsp;Juni&nbsp;1983 war es dann so weit: der alte Hüttenplatz konnte geräumt werden.
+          </p>
+          <p>
+            Am 25. Juni 1983 haben die Bauarbeiten offiziell begonnen.
+            Jeden Tag waren 10 bis 15 Mann auf Oberwend und haben mit sehr viel Muskelkraft an der Hütte gearbeitet.
+            Maschinen hatte man nicht so wie im Tal zur Verfügung.
+            Das einzige grosse Transportmittel war ein Helikopter, der die ganzen Holzteile und anderes Baumaterial auf die
+            Baustelle brachte.
+          </p>
+          <img src="assets-static-img/oberwend/oberwend6s.jpg"/>
+          <p>
+            Trotz der schweren Arbeit waren immer alle frohen Mutes. Es wurde auch einmal etwas mehr getrunken, als man brauchte,
+            aber nur nach Feierabend.
+            Schon nach dreiwöchiger Arbeit stand die Hütte im Rohbau da.
+            Die Ausbau- und Umgebungsarbeiten hat man dann mit Hochdruck vorangetrieben, so dass am 16.Oktober 1983 die Hütte
+            gesegnet und der verdiente Firstwii getrunken werden konnte.
+          </p>
+          <p>
+            Die Arbeiten an der Hütte waren dann abgeschlossen.
+            In den letzten Jahren wurden aber schon wieder einige Sachen renoviert.
+            Zum Beispiel haben wir jetzt eine Solaranlage, welche mehr Licht in die Hütte bringt.
+            Auch die Wasserfassung wurde unter den Huetstock verlegt, damit es besseres Wasser in der Hütte hat.
+          </p>
+          <img src="assets-static-img/oberwend/oberwend7s.jpg"/>
+          <p>
+            Zum Schluss möchten wir uns bedanken für all die geleisteten Arbeiten und hoffen, dass alle die sich in der Alphütte
+            Oberwend aufhalten, sie auch geniessen und die Hütte so verlassen, wie sie aufgefunden wurde.
+          </p>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

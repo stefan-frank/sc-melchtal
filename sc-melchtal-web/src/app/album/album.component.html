@@ -1,6 +1,13 @@
-<h4 id="gallery_title">{{album.title}}</h4>
-<ngx-gallery
-  [options]="album.options"
-  [images]="album.gallery">
-</ngx-gallery>
+<div class="card">
+  <div class="card-header">
+    <h4>{{album.title}}</h4>
+  </div>
+  <div class="card-body">
+    <ngx-gallery
+      [options]="album.options"
+      [images]="album.gallery">
+    </ngx-gallery>
+  </div>
+</div>
+
 

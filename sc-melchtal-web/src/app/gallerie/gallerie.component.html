@@ -1,15 +1,23 @@
-<h2 id="toptitle">Gallerie</h2>
-<div id="text">
-  <mat-form-field>
-    <mat-select [(value)]="selectedYear">
-      <mat-option *ngFor="let year of years" [value]="year">{{year}}</mat-option>
-    </mat-select>
-  </mat-form-field>
-  <div *ngIf="selectedGallery">
-    <app-album *ngFor="let albumId of selectedGallery.albumIds" [albumId]="albumId"></app-album>
-    <br/>
-    <br/>
+<div class="row justify-content-md-center">
+  <div class="col-md-auto">
+    <h2 class="text-center">Gallerie</h2>
   </div>
+</div>
+<div class="row justify-content-md-center">
+  <div class="col-md-12">
+    <div class="text-center">
+      <mat-form-field >
+        <mat-select [(value)]="selectedYear">
+          <mat-option *ngFor="let year of years" [value]="year">{{year}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+</div>
+<div class="row justify-content-md-center" *ngIf="selectedGallery">
+  <app-album class="col-md-6" *ngFor="let albumId of selectedGallery.albumIds" [albumId]="albumId"></app-album>
+
+
   <!--cl-image *ngFor="let photo of photos" public-id="{{photo.public_id}}" >
     <cl-transformation width="400" crop="scale">
     </cl-transformation>

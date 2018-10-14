@@ -1,14 +1,18 @@
-<div style="display: inline-block; width: 200px; height: 200px">
-  <img src="{{vorstandsmitglied.avatar.url}}"
+<div class="card-header">
+  {{vorstandsmitglied.role}}
+</div>
+<div class="card-body">
+  <img class="img-fluid float-left" src="{{vorstandsmitglied.avatar.url}}"
        alt="{{vorstandsmitglied.role}}: {{vorstandsmitglied.nachname}} {{vorstandsmitglied.vorname}}"
   />
-</div>
-<div style="display: inline-block; vertical-align: top"><strong>{{vorstandsmitglied.role}}</strong>
-  <div>{{vorstandsmitglied.nachname}} {{vorstandsmitglied.vorname}}</div>
-  <div>{{vorstandsmitglied.strasse}}</div>
-  <div>{{vorstandsmitglied.zipcode}} {{vorstandsmitglied.location}}</div>
-  <br/>
-  <div *ngIf="vorstandsmitglied.mobile"><mat-icon>phonelink_ring</mat-icon><a href="tel:{{vorstandsmitglied.mobile}}">{{vorstandsmitglied.mobile}}</a></div>
-  <div *ngIf="vorstandsmitglied.telefon"><mat-icon>phone</mat-icon><a href="tel:{{vorstandsmitglied.telefon}}">{{vorstandsmitglied.telefon}}</a></div>
-  <div *ngIf="vorstandsmitglied.email"><mat-icon>mail_outline</mat-icon><a href="mailto:{{vorstandsmitglied.email}}">{{vorstandsmitglied.email}}</a></div>
+  <div class="float-left">
+    <div>{{vorstandsmitglied.nachname}} {{vorstandsmitglied.vorname}}</div>
+    <div>{{vorstandsmitglied.strasse}}</div>
+    <div>{{vorstandsmitglied.zipcode}} {{vorstandsmitglied.location}}</div>
+    <br/>
+    <div class="small" *ngIf="vorstandsmitglied.mobile"><mat-icon>phonelink_ring</mat-icon><a href="tel:{{vorstandsmitglied.mobile}}">{{vorstandsmitglied.mobile}}</a></div>
+    <div class="small" *ngIf="vorstandsmitglied.telefon"><mat-icon>phone</mat-icon><a href="tel:{{vorstandsmitglied.telefon}}">{{vorstandsmitglied.telefon}}</a></div>
+    <div class="small" *ngIf="vorstandsmitglied.email"><mat-icon>mail_outline</mat-icon><a href="mailto:{{vorstandsmitglied.email}}">{{vorstandsmitglied.email}}</a></div>
+  </div>
+
 </div>

@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {NgxGalleryAnimation, NgxGalleryImage, NgxGalleryOptions} from 'ngx-gallery';
+import {NgxGalleryAnimation, NgxGalleryImage, NgxGalleryImageSize, NgxGalleryOptions} from 'ngx-gallery';
 import {Vorstand, VorstandsRole} from '../models/vorstand.model';
 import {Store} from '@ngrx/store';
 import * as fromStore from '../store/reducers/index';
-import {Vorstandsmitglied} from "../models/Vorstandsmitglied.model";
-import * as VorstandActions from "../store/actions/vorstand.actions";
-import {Observable} from "rxjs";
+import {Vorstandsmitglied} from '../models/Vorstandsmitglied.model';
+import * as VorstandActions from '../store/actions/vorstand.actions';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-oberwend',
@@ -16,7 +16,7 @@ export class OberwendComponent implements OnInit {
 
   galleryOptions: NgxGalleryOptions[];
   galleryImages: NgxGalleryImage[];
-  
+
   vorstandsmitglied: Vorstandsmitglied;
 
   constructor(private store: Store<fromStore.State>) {}
@@ -27,12 +27,15 @@ export class OberwendComponent implements OnInit {
 
     this.galleryOptions = [
       {
+        width: '100%',
+        fullWidth: false,
         thumbnailsColumns: 4,
         imageAnimation: NgxGalleryAnimation.Slide,
         imageDescription: true,
         imageInfinityMove: true,
         imageAutoPlay: true,
-        imageAutoPlayInterval: 5000
+        imageAutoPlayInterval: 5000,
+        imageSize: NgxGalleryImageSize.Cover,
 
       }
     ];

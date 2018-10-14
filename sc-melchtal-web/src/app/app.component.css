@@ -1,0 +1,28 @@
+div .containercontainer {
+  background-color: aliceblue;
+}
+
+div nav {
+  background-color: #334A97;
+/*  color: white; */
+}
+
+a.nav-link {
+  color: white;
+}
+
+h1 {
+  font-size: large;
+  vertical-align: middle;
+  font-weight: bolder;
+  color: white;
+  margin-bottom: 0em;
+}
+
+div img.img-fluid {
+  margin-bottom: 25px;
+}
+
+#footer-img {
+  margin-top: 20px;
+}

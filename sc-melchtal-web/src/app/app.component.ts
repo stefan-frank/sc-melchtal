@@ -8,6 +8,8 @@ import {environment} from '../environments/environment';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  navbarCollapsed = true;
+
   constructor(angulartics2GoogleAnalytics: Angulartics2GoogleAnalytics) {
     if (environment.production) {
       angulartics2GoogleAnalytics.startTracking();

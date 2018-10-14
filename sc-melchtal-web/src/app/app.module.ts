@@ -20,6 +20,8 @@ import 'hammerjs';
 import {AlbumComponent} from './album/album.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatIconModule, MatSelectModule, MatTabsModule} from '@angular/material';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
 // Cloudinary
 import {CloudinaryModule} from '@cloudinary/angular-5.x';
 import * as Cloudinary from 'cloudinary-core';
@@ -60,6 +62,7 @@ registerLocaleData(localeDe);
     MatTabsModule,
     MatSelectModule,
     MatIconModule,
+    NgbModule,
     NgxGalleryModule,
     CloudinaryModule.forRoot(Cloudinary, {
       cloud_name: 'sc-melchtal',

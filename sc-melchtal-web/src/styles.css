@@ -1,5 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "~bootstrap/dist/css/bootstrap.css";
+@import "~font-awesome/css/font-awesome.css";
 
 .mat-tab-group, mat-tab {
   transform: none !important;
@@ -7,14 +9,18 @@
 
 body {
   background: #222;
-  text-align: center;
 }
 
-/* Achtung bei �nderungen von ul, li - wird f�r Navigation aktiv */
-* {
-  padding: 0;
-  margin: 0;
+.card {
+  margin-bottom: 10px;
 }
+
+.card-deck {
+  margin-bottom: 10px;
+}
+
+
+/*
 
 hr {
   background: white;
@@ -24,23 +30,7 @@ hr {
 
 img {
   border: none;
-  vertical-align: bottom; /* wegen vertikaler L�cke bei STRICT */
-}
-
-#titlegraph {
-  position: absolute;
-  top: -30px;
-  left: -30px;
-}
-
-#boundingbox {
-  position: absolute;
-  top: 50px;
-  width: 760px;
-  left: 50%;
-  margin-left: -380px; /* centers a 760px _container_ */
-  text-align: left;
-  font: 13px/20px Verdana, Geneva, Arial, Helvetica, sans-serif;
+  vertical-align: bottom;
 }
 
 #titlegraph {
@@ -84,7 +74,7 @@ img {
 }
 
 #toptitle {
-  /* height: 60px; */
+//  height: 60px;
   padding-left: 222px;
   padding-top: 25px;
   padding-bottom: 10px;
@@ -96,36 +86,6 @@ img {
   width: 760px;
   color: #222;
   background: #fff url("assets/scm-p2.png") repeat-y;
-}
-
-#menu {
-  float: left;
-  padding-left: 25px;
-  padding-top: 60px;
-  width: 160px;
-  /* border: 1px solid Yellow; */
-}
-
-.menu {
-  width: 460px;
-  border: 0px;
-  border-collapse: collapse;
-}
-
-.menu td {
-  padding: 0;
-}
-
-#menu #menutxt {
-  margin: 35px 0 0 5px;
-  /* border: 1px solid Yellow; */
-}
-
-#menu #menutxt1 {
-  margin: 3px 0 0 5px;
-  padding: 5px 2px 10px 5px;;
-  background-color: #DDD;
-  /* border: 1px solid Yellow; */
 }
 
 #text {
@@ -299,3 +259,4 @@ td {
   vertical-align: top;
   padding-right: 10px;
 }
+*/
