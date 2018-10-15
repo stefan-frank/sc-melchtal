@@ -3,7 +3,7 @@ div .containercontainer {
 }
 
 div nav {
-  background-color: #334A97;
+  background-color: var(--main-bg-color);
 /*  color: white; */
 }
 
@@ -12,8 +12,7 @@ a.nav-link {
 }
 
 h1 {
-  font-size: large;
-  vertical-align: middle;
+  font-size: x-large;
   font-weight: bolder;
   color: white;
   margin-bottom: 0em;

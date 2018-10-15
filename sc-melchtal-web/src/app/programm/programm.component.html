@@ -9,14 +9,13 @@
   <div class="col-md-12">
     <div *ngFor="let event of ereignisse" class="card">
       <div class="card-header">
-        <span class="text-muted">{{event.dateFrom | date : 'fullDate'}}</span>
-        <span class="text-muted" *ngIf="event.dateTo"> - {{event.dateTo | date : 'fullDate'}}</span>
-      </div>
-
-      <div class="card-body">
-        <div class="card-title">
-          <h3>{{event.title}}</h3>
+        <h3 class="float-left">{{event.title}}</h3>
+        <div class="float-md-right float-sm-left">
+          <span>{{event.dateFrom | date : 'fullDate'}}</span>
+          <span *ngIf="event.dateTo"> - {{event.dateTo | date : 'fullDate'}}</span>
         </div>
+      </div>
+      <div class="card-body">
         <div class="card-text">
           <p [innerHTML]="event.description" id="description"></p>
           <div *ngIf="(event.anmeldung || event.auskunft) && event.contact">

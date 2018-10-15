@@ -11,19 +11,16 @@
     <div *ngFor="let newsItem of news$ | async" id="home_news">
       <div class="card">
         <div class="card-header">
-          <h3 class="text-left" style="display: inline-block">{{newsItem.title}}</h3><small class="text-muted float-right">Datum: {{newsItem.created | date : 'shortDate'}}</small></div>
-        <!--table class="smallfont">
-          <tr>
-            <td>Erstellt: </td>
-
-          </tr>
-        </table-->
+          <h3 class="text-left" style="display: inline-block">{{newsItem.title}}</h3>
+          <div class="float-md-right float-sm-left">Datum: {{newsItem.created | date : 'shortDate'}}</div>
+        </div>
         <div class="card-body">
           <p [innerHTML]="newsItem.text"></p>
           <a class="card-link" *ngIf="newsItem.attachement" href="{{newsItem.attachement.url}}"><mat-icon>get_app</mat-icon> {{newsItem.attachement.filename}}</a>
           <p class="card-text">
-            <small class="float-left text-muted">Author: {{newsItem.author.nachname}} {{newsItem.author.vorname}} ({{newsItem.author.role}})</small>
-            <small class="float-right text-muted">Zuletzt geändert: {{newsItem.updated | date : 'shortDate'}}</small>
+            <small class="text-muted">Author: {{newsItem.author.nachname}} {{newsItem.author.vorname}} ({{newsItem.author.role}})</small>
+            <br class="d-sm-none" />
+            <small class="float-md-right text-muted">Zuletzt geändert: {{newsItem.updated | date : 'shortDate'}}</small>
           </p>
         </div>
       </div>
