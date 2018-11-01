@@ -9,6 +9,8 @@ import {environment} from '../environments/environment';
 })
 export class AppComponent {
   navbarCollapsed = true;
+  imageHeaderUrlBig = 'scm-panorama-1200.jpg';
+  imageHeaderUrlSmall = 'scm-panorama-sm.jpg';
 
   constructor(angulartics2GoogleAnalytics: Angulartics2GoogleAnalytics) {
     if (environment.production) {

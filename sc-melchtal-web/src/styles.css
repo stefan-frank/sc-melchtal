@@ -28,11 +28,19 @@ body {
 }
 
 .card-header {
-  background: var(--main-bg-color);
+  background: #334A97;
   color: white;
 }
 
 h3 {
   font-size: x-large;
   margin-bottom: 0em;
+}
+
+.navbar-brand {
+  margin-right: 0rem;
+}
+
+.navbar-toggler {
+  padding: 0.25rem;
 }

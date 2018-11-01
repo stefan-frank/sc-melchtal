@@ -9,8 +9,8 @@
   <div class="col-md-12">
     <div *ngFor="let event of ereignisse" class="card">
       <div class="card-header">
-        <h3 class="float-left">{{event.title}}</h3>
-        <div class="float-md-right float-sm-left">
+        <h3 class="d-lg-inline-block">{{event.title}}</h3>
+        <div class="float-lg-right">
           <span>{{event.dateFrom | date : 'fullDate'}}</span>
           <span *ngIf="event.dateTo"> - {{event.dateTo | date : 'fullDate'}}</span>
         </div>

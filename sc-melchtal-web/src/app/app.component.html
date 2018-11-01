@@ -1,9 +1,11 @@
 <div class="container" style="background-color: ghostwhite">
   <div class="cotainer">
     <nav class="navbar navbar-expand-lg navbar-dark rounded-top">
-      <!--a class="navbar-brand" [routerLink]="['/home']" (click)="navbarCollapsed = true"><img src="assets/logo-30.png" width="30" height="30" alt="" /></a-->
-      <h1 class="text-center">Skiclub Melchtal</h1>
-      <button class="navbar-toggler" type="button" (click)="navbarCollapsed = !navbarCollapsed" [attr.aria-expanded]="!navbarCollapsed" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle Navigation">
+      <a class="navbar-brand" [routerLink]="['/home']" (click)="navbarCollapsed = true"><img src="assets/logo-60-th.png" alt="" /></a>
+      <h1 class="d-none d-md-block text-center">Ski- und Wanderclub Melchtal</h1>
+      <h1 class="d-none d-sm-block d-md-none text-center">Skiclub Melchtal</h1>
+      <h1 class="d-block d-sm-none text-center">SC-Melchtal</h1>
+      <button class="navbar-toggler " type="button" (click)="navbarCollapsed = !navbarCollapsed" [attr.aria-expanded]="!navbarCollapsed" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle Navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
@@ -41,24 +43,12 @@
       </div>
     </nav>
   </div>
-  <img class="img-fluid rounded-bottom" src="assets/scm-panorama-1200.jpg"/>
-
-
-  <!--div class="row" id="titlegraph">
-    <img src="assets-static-img/scm_ptitle1.png" width="215" height="215" alt=""/>
-  </div-->
-
-  <!--div class="row justify-content-md-center" id="top">
-    <div class="col-md-auto">
-      <h1 id="topscmtext">
-        Ski- und Wanderclub Melchtal
-      </h1>
-    </div>
-  </div-->
+  <img class="img-fluid rounded-bottom d-none d-sm-block" src="assets/{{imageHeaderUrlBig}}"/>
+  <img class="img-fluid rounded-bottom d-sm-none mx-auto" src="assets/{{imageHeaderUrlSmall}}"/>
   <router-outlet></router-outlet>
   <div class="row justify-content-md-center">
     <div class="col-md-auto align-content-md-center">
-      <img id="footer-img" class="mx-auto d-block" src="assets/logo-200.png" alt=""/>
+      <img id="footer-img" class="mx-auto d-block" src="assets/logo-200-th.png" alt=""/>
     </div>
   </div>
 

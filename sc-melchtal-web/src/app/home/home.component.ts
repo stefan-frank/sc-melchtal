@@ -7,6 +7,7 @@ import * as fromStore from '../store/reducers/index';
 import * as ProgrammActions from '../store/actions/programm.actions';
 import * as NewsActions from '../store/actions/news.action';
 import {from, Observable} from 'rxjs';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -21,14 +22,15 @@ export class HomeComponent implements OnInit {
   news$: Observable<News[]>;
 
   constructor(
-    private store: Store<fromStore.State>
+    private store: Store<fromStore.State>,
+    private router: Router
   ) {}
 
   ngOnInit() {
+    this.store.dispatch(new NewsActions.LoadNews());
+    this.news$ = this.store.select(fromStore.getNews);
     this.store.dispatch(new ProgrammActions.LoadProgramm());
     this.store.select(fromStore.getProgramm).subscribe(programm => this.ereignisse = programm.ereignisseInZukunft());
-    this.news$ = this.store.select(fromStore.getNews);
-    this.store.dispatch(new NewsActions.LoadNews());
 
     this.galleryOptions = [
       {
@@ -68,5 +70,9 @@ export class HomeComponent implements OnInit {
         big: 'assets-static-img/stirnband/farb-beispiel-türkisblau.jpeg'
       },
     ];
+  }
+
+  routeTo(target: string) {
+    this.router.navigate([target]);
   }
 }
