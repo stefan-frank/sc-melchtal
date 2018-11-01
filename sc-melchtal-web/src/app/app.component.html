@@ -6,7 +6,8 @@
       <h1 class="d-none d-sm-block d-md-none text-center">Skiclub Melchtal</h1>
       <h1 class="d-block d-sm-none text-center">SC-Melchtal</h1>
       <button class="navbar-toggler " type="button" (click)="navbarCollapsed = !navbarCollapsed" [attr.aria-expanded]="!navbarCollapsed" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle Navigation">
-        <span class="navbar-toggler-icon"></span>
+        <!--span class="navbar-toggler-icon"></span-->
+        <mat-icon>menu</mat-icon>
       </button>
 
       <div [ngbCollapse]="navbarCollapsed" class="navbar-collapse" id="navbarContent">

@@ -25,3 +25,8 @@ div img.img-fluid {
 #footer-img {
   margin-top: 20px;
 }
+
+.navbar-toggler {
+  color: white;
+  border-color: white;
+}
