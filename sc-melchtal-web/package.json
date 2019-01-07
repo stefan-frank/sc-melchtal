@@ -26,6 +26,7 @@
     "@cloudinary/angular-5.x": "^1.0.2",
     "@ng-bootstrap/ng-bootstrap": "^3.3.0",
     "@ngrx/effects": "^6.0.0",
+    "@ngrx/router-store": "^6.1.2",
     "@ngrx/store": "^6.1.0",
     "@ngrx/store-devtools": "^6.0.0",
     "angulartics2": "^7.0.0",

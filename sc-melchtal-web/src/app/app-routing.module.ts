@@ -9,18 +9,19 @@ import {LinksComponent} from './links/links.component';
 import {OberwendComponent} from './oberwend/oberwend.component';
 import {KontaktComponent} from './kontakt/kontakt.component';
 import {GallerieComponent} from './gallerie/gallerie.component';
+import {Page} from './constants';
 
 const routes: Routes = [
-  {path: '', redirectTo: '/home', pathMatch: 'full'},
-  {path: 'programm', component: ProgrammComponent},
-  {path: 'home', component: HomeComponent},
-  {path: 'vorstand', component: VorstandComponent},
-  {path: 'jo', component: JoComponent},
-  {path: 'archiv', component: ArchivComponent},
-  {path: 'links', component: LinksComponent},
-  {path: 'oberwend', component: OberwendComponent},
-  {path: 'kontakt', component: KontaktComponent},
-  {path: 'gallerie', component: GallerieComponent}
+  {path: '', redirectTo: '/' + Page.Home, pathMatch: 'full'},
+  {path: Page.Programm, component: ProgrammComponent},
+  {path: Page.Home, component: HomeComponent},
+  {path: Page.Vorstand, component: VorstandComponent},
+  {path: Page.Jo, component: JoComponent},
+  {path: Page.Archiv, component: ArchivComponent},
+  {path: Page.Links, component: LinksComponent},
+  {path: Page.Oberwend, component: OberwendComponent},
+  {path: Page.Kontakt, component: KontaktComponent},
+  {path: Page.Gallerie, component: GallerieComponent}
 ];
 
 @NgModule({

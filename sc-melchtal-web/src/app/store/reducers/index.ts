@@ -9,17 +9,24 @@ import { environment } from '../../../environments/environment';
 import * as fromProgramm from './programm.reducer';
 import * as fromVorstand from './vorstand.reducer';
 import * as fromNews from './news.reducer';
+import * as fromPage from './page.reducer';
+import * as fromRouter from '@ngrx/router-store';
+import {RouterStateUrl} from '../router.utils';
 
 export interface State {
   programm: fromProgramm.State;
   vorstand: fromVorstand.State;
   news: fromNews.State;
+  page: fromPage.State;
+  router: fromRouter.RouterReducerState<RouterStateUrl>;
 }
 
 export const reducers: ActionReducerMap<State> = {
   programm: fromProgramm.reducer,
   vorstand: fromVorstand.reducer,
-  news: fromNews.reducer
+  news: fromNews.reducer,
+  page: fromPage.reducer,
+  router: fromRouter.routerReducer
 };
 
 export const metaReducers: MetaReducer<State>[] = !environment.production ? [] : [];
@@ -37,3 +44,8 @@ export const getProgrammDataLoadedFromApi = createSelector(selectProgrammState, 
 export const selectNewsState = createFeatureSelector<fromNews.State>('news');
 export const getNews = createSelector(selectNewsState, fromNews.getNews);
 export const getNewsDataLoadedFromApi = createSelector(selectNewsState, fromNews.getDataLoadedFromApi);
+
+export const selectPageState = createFeatureSelector<fromPage.State>('page');
+export const getPage = createSelector(selectPageState, fromPage.getPage);
+
+export const getRouterState = createFeatureSelector<fromRouter.RouterReducerState<RouterStateUrl>>('router');

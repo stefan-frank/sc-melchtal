@@ -44,8 +44,16 @@
       </div>
     </nav>
   </div>
-  <img class="img-fluid rounded-bottom d-none d-sm-block" src="assets/{{imageHeaderUrlBig}}"/>
-  <img class="img-fluid rounded-bottom d-sm-none mx-auto" src="assets/{{imageHeaderUrlSmall}}"/>
+  <img [@showImage]="isShown ? 'shown' : 'notShown'"
+       (@showImage.done)="onAnimationEvent($event)"
+       (load)="onImageLoaded($event)"
+       class="img-fluid rounded-bottom d-sm-none mx-auto"
+       [src]="imageHeaderUrlSmall"/>
+  <img [@showImage]="isShown ? 'shown' : 'notShown'"
+       (@showImage.done)="onAnimationEvent($event)"
+       (load)="onImageLoaded($event)"
+       class="img-fluid rounded-bottom d-none d-sm-block"
+       [src]="imageHeaderUrlBig"/>
   <router-outlet></router-outlet>
   <div class="row justify-content-md-center">
     <div class="col-md-auto align-content-md-center">
