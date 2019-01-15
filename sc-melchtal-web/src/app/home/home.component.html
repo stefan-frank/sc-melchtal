@@ -15,7 +15,7 @@
           <div class="float-lg-right">Veröffentlicht: {{newsItem.created | date : 'shortDate'}}</div>
         </div>
         <div class="card-body">
-          <p [innerHTML]="newsItem.text"></p>
+          <p [innerHTML]="newsItem.text | mdToHtml"></p>
           <a class="card-link" *ngIf="newsItem.attachement" href="{{newsItem.attachement.url}}"><mat-icon>get_app</mat-icon> {{newsItem.attachement.filename}}</a>
           <p class="card-text">
             <small class="text-muted">Author: {{newsItem.author.nachname}} {{newsItem.author.vorname}} ({{newsItem.author.role}})</small>

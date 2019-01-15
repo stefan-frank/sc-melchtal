@@ -38,9 +38,8 @@ import {NewsEffects} from './store/effects/news.effects';
 import {Angulartics2Module} from 'angulartics2';
 import {RouterStateSerializer, StoreRouterConnectingModule} from '@ngrx/router-store';
 import {CustomSerializer} from './store/router.utils';
-import {RouterEffects} from "./store/effects/router.effects";
+import {RouterEffects} from './store/effects/router.effects';
 import { MdToHtmlPipe } from './md-to-html.pipe';
-import { TestComponent } from './test/test.component';
 
 registerLocaleData(localeDe);
 
@@ -58,8 +57,7 @@ registerLocaleData(localeDe);
     JoComponent,
     AlbumComponent,
     VorstandsmitgliedComponent,
-    MdToHtmlPipe,
-    TestComponent
+    MdToHtmlPipe
   ],
   imports: [
     BrowserModule,

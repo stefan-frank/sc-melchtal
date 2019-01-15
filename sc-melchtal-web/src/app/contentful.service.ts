@@ -7,7 +7,6 @@ import {environment} from '../environments/environment';
 import {Programm} from './models/programm.model';
 import {Ereignis} from './models/ereignis.model';
 import {Vorstandsmitglied} from './models/Vorstandsmitglied.model';
-import {Test} from './models/test.model';
 
 const CONFIG = {
   space: '56vs0juzkteh',
@@ -16,8 +15,7 @@ const CONFIG = {
   contentTypeIds: {
     ereignis: 'DeHXg4DzkkqWOMy6kA2ao',
     news: 'news',
-    vorstand: 'l4eND8PJu0kMseQoe28w2',
-    test: 'test'
+    vorstand: 'l4eND8PJu0kMseQoe28w2'
   }
 };
 
@@ -99,23 +97,6 @@ export class ContentfulService {
     vorstandsmitglied.location = item.fields['location'];
     vorstandsmitglied.avatar = mapAssetInfoToObject(item.fields['avatar'], res.includes['Asset']);
     return vorstandsmitglied;
-  }
-
-  public getTest(query?: object): Promise<Test[]> {
-    return this.cdaClient.getEntries(Object.assign({
-      content_type: CONFIG.contentTypeIds.test
-    }, query)).then(
-      res => {
-        const test = [];
-        res.items.forEach(item => {
-          const testItem = new Test();
-          testItem.content = String(item.fields['content2']);
-          testItem.title = item.fields['title'];
-          test.push(testItem);
-        });
-        return test;
-      }
-    );
   }
 
   public getNews(query?: object): Promise<News[]> {
