@@ -1,4 +1,5 @@
 export enum Page {
+  Test = 'test',
   Home = 'home',
   Oberwend = 'oberwend',
   Programm = 'programm',

@@ -10,6 +10,7 @@ import {OberwendComponent} from './oberwend/oberwend.component';
 import {KontaktComponent} from './kontakt/kontakt.component';
 import {GallerieComponent} from './gallerie/gallerie.component';
 import {Page} from './constants';
+import {TestComponent} from './test/test.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/' + Page.Home, pathMatch: 'full'},
@@ -21,7 +22,8 @@ const routes: Routes = [
   {path: Page.Links, component: LinksComponent},
   {path: Page.Oberwend, component: OberwendComponent},
   {path: Page.Kontakt, component: KontaktComponent},
-  {path: Page.Gallerie, component: GallerieComponent}
+  {path: Page.Gallerie, component: GallerieComponent},
+  {path: Page.Test, component: TestComponent}
 ];
 
 @NgModule({

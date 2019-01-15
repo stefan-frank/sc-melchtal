@@ -39,6 +39,8 @@ import {Angulartics2Module} from 'angulartics2';
 import {RouterStateSerializer, StoreRouterConnectingModule} from '@ngrx/router-store';
 import {CustomSerializer} from './store/router.utils';
 import {RouterEffects} from "./store/effects/router.effects";
+import { MdToHtmlPipe } from './md-to-html.pipe';
+import { TestComponent } from './test/test.component';
 
 registerLocaleData(localeDe);
 
@@ -55,7 +57,9 @@ registerLocaleData(localeDe);
     KontaktComponent,
     JoComponent,
     AlbumComponent,
-    VorstandsmitgliedComponent
+    VorstandsmitgliedComponent,
+    MdToHtmlPipe,
+    TestComponent
   ],
   imports: [
     BrowserModule,
