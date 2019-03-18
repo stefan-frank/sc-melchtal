@@ -29,6 +29,8 @@
         </div>
       </div>
     </div>
+    <button *ngIf="!isCollapsed" type="button" class="btn btn-primary btn-lg btn-block" (click)="toggleShowPastNews()"
+            [attr.aria-expanded]="!isCollapsed" aria-controls="collapseVergangenheit">{{showButtonText()}} <mat-icon>{{isCollapsed ? 'expand_more' : 'expand_less'}}</mat-icon></button>
   </div>
 </div>
 <div class="row justify-content-md-center">
