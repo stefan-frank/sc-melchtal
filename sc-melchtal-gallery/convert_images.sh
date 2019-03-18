@@ -1,5 +1,12 @@
 #!/bin/bash
 
+# Add a flag to define the order of the images inside the gallery
+# -n sort by file name (default)
+# -d sort chronologically by the original creation time (e.g. for coverages of a wedding)
+# -c sort by primary image color
+# Additional optional parameter to support multiple galleries. Add it if you want to put your images into a separate gallery.
+# --gName=yourGalleryName
+
 inputdir="gallery_input"
 outputdir="src/assets/img/gallery"
 

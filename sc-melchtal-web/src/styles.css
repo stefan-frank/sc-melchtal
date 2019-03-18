@@ -44,3 +44,8 @@ h3 {
 .navbar-toggler {
   padding: 0.25rem;
 }
+
+/* Fix for IE 11 Responsive Bug */
+.news {
+  width: 100%;
+}

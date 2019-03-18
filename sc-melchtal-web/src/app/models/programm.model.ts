@@ -1,9 +1,11 @@
 import {Ereignis} from './ereignis.model';
 
 export class Programm {
-  public ereignisse = new Array<Ereignis>();
+  private _ereignisse = new Array<Ereignis>();
   private today: Date;
   private yesterday: Date;
+  private _ereignisseInZukunft = new Array<Ereignis>();
+  private _ereignisseInVergangenheit = new Array<Ereignis>();
 
   constructor() {
     this.today = new Date();
@@ -11,17 +13,24 @@ export class Programm {
     this.yesterday.setDate(this.today.getDate() - 1);
   }
 
-  public ereignisseInZukunft(): Ereignis[] {
-    const ereignisseInZukunft = new Array<Ereignis>();
-
-    this.ereignisse.forEach(ereignis => {
+  public set ereignisse(ereignisse: Array<Ereignis>) {
+    ereignisse.forEach(ereignis => {
       if (ereignis.dateFrom > this.yesterday) {
-        ereignisseInZukunft.push(ereignis);
+        this._ereignisseInZukunft.push(ereignis);
       } else if (ereignis.dateTo > this.today) {
-        ereignisseInZukunft.push(ereignis);
+        this._ereignisseInZukunft.push(ereignis);
+      } else {
+        this._ereignisseInVergangenheit.push(ereignis);
       }
     });
+  }
 
-    return ereignisseInZukunft;
-}
+  public get ereignisseInZukunft(): Ereignis[] {
+    return this._ereignisseInZukunft;
+  }
+
+  public get ereignisseInVergangenheit(): Ereignis[] {
+    return this._ereignisseInVergangenheit;
+  }
+
 }

@@ -33,9 +33,11 @@
         <div class="card-header" (click)="routeTo('/programm')">Die nächsten Anlässe <span><mat-icon class="float-right">launch</mat-icon></span></div>
         <ul class="list-group">
           <li *ngFor="let event of ereignisse" class="list-group-item">
-            {{event.dateFrom | date : 'fullDate'}} <span *ngIf="event.dateTo"> - {{event.dateTo | date : 'fullDate'}}</span>
-            <br/>
-            <strong>{{event.title}}</strong>
+            <div (click)="routeTo('/programm', event.id)">
+              {{event.dateFrom | date : 'fullDate'}} <span *ngIf="event.dateTo"> - {{event.dateTo | date : 'fullDate'}}</span>
+              <br/>
+              <strong>{{event.title}}</strong>
+            </div>
           </li>
         </ul>
         <div class="card-body">

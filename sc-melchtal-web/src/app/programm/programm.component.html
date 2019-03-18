@@ -1,14 +1,60 @@
 <div class="row justify-content-md-center">
   <div class="col-md-12">
-    <h2 class="text-center">
+    <h2 class="text-center" id="top">
       Das Winterprogramm 2018/2019
     </h2>
   </div>
 </div>
 <div class="row justify-content-md-center">
   <div class="col-md-12">
-    <div *ngFor="let event of ereignisse" class="card">
-      <div class="card-header">
+    <button type="button" class="btn btn-primary btn-lg btn-block" (click)="toggleShowPast()"
+            [attr.aria-expanded]="!isCollapsed" aria-controls="collapseVergangenheit">{{showButtonText()}} <mat-icon>{{isCollapsed ? 'expand_more' : 'expand_less'}}</mat-icon></button>
+    <div id="collapseVergangenheit" [ngbCollapse]="isCollapsed">
+      <div *ngFor="let event of ereignisseInVergangenheit" class="card">
+        <div id="{{event.id}}" class="card-header past">
+          <h3 class="d-lg-inline-block">{{event.title}}</h3>
+          <div class="float-lg-right">
+            <span>{{event.dateFrom | date : 'fullDate'}}</span>
+            <span *ngIf="event.dateTo"> - {{event.dateTo | date : 'fullDate'}}</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="card-text">
+            <p [innerHTML]="event.description | mdToHtml" id="description"></p>
+            <div *ngIf="(event.anmeldung || event.auskunft) && event.contact">
+              <div style="font-weight: bold">
+                <span *ngIf="event.anmeldung">Anmeldung</span>
+                <span *ngIf="event.anmeldung && event.auskunft"> & </span>
+                <span *ngIf="event.auskunft">Auskunft</span>
+                <span *ngIf="event.anmeldung || event.auskunft">: </span>
+              </div>
+              <div style="display: inline-block; width: 80px; height: 80px; margin-right: 10px; margin-bottom: 5px">
+                <img width="75px" height="75px" src="{{event.contact.avatar.url}}" alt="{{event.contact.nachname}} {{event.contact.vorname}}"
+                />
+              </div>
+              <div style="display: inline-block; vertical-align: top;">
+                <div>{{event.contact.nachname}} {{event.contact.vorname}}</div>
+                <div *ngIf="event.contactByMail && event.contact.email"><mat-icon>mail_outline</mat-icon><a href="mailto:{{event.contact.email}}">{{event.contact.email}}</a></div>
+                <div *ngIf="event.contactByMobile && event.contact.mobile"><mat-icon>phonelink_ring</mat-icon><a href="tel:{{event.contact.mobile}}">{{event.contact.mobile}}</a></div>
+                <div *ngIf="event.contactByTelefon && event.contact.telefon"><mat-icon>phone</mat-icon><a href="tel:{{event.contact.telefon}}">{{event.contact.telefon}}</a></div>
+              </div>
+            </div>
+            <div *ngIf="event.calendar">
+              <b>Kalender-Eintrag:</b>
+              <div><mat-icon>get_app</mat-icon><span [innerHTML]="event.calendar"></span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button *ngIf="!isCollapsed" type="button" class="btn btn-primary btn-lg btn-block" (click)="toggleShowPast()"
+            [attr.aria-expanded]="!isCollapsed" aria-controls="collapseVergangenheit">{{showButtonText()}} <mat-icon>{{isCollapsed ? 'expand_more' : 'expand_less'}}</mat-icon></button>
+  </div>
+</div>
+<div class="row justify-content-md-center">
+  <div class="col-md-12">
+    <div *ngFor="let event of ereignisseInZukunft" class="card">
+      <div id="{{event.id}}" class="card-header">
         <h3 class="d-lg-inline-block">{{event.title}}</h3>
         <div class="float-lg-right">
           <span>{{event.dateFrom | date : 'fullDate'}}</span>
@@ -17,7 +63,7 @@
       </div>
       <div class="card-body">
         <div class="card-text">
-          <p [innerHTML]="event.description" id="description"></p>
+          <p [innerHTML]="event.description | mdToHtml" id="description"></p>
           <div *ngIf="(event.anmeldung || event.auskunft) && event.contact">
             <div style="font-weight: bold">
               <span *ngIf="event.anmeldung">Anmeldung</span>

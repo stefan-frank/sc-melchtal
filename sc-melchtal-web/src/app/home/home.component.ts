@@ -30,7 +30,7 @@ export class HomeComponent implements OnInit {
     this.store.dispatch(new NewsActions.LoadNews());
     this.news$ = this.store.select(fromStore.getNews);
     this.store.dispatch(new ProgrammActions.LoadProgramm());
-    this.store.select(fromStore.getProgramm).subscribe(programm => this.ereignisse = programm.ereignisseInZukunft());
+    this.store.select(fromStore.getProgramm).subscribe(programm => this.ereignisse = programm.ereignisseInZukunft);
 
     this.galleryOptions = [
       {
@@ -72,7 +72,7 @@ export class HomeComponent implements OnInit {
     ];
   }
 
-  routeTo(target: string) {
-    this.router.navigate([target]);
+  routeTo(target: string, fragment?: string) {
+    this.router.navigate([target], {fragment: fragment});
   }
 }

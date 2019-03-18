@@ -3,6 +3,14 @@
   padding-right: 10px;
 }
 
+button {
+  background-color: #334A97;
+}
+
+.past {
+  background-color: gray;
+}
+
 #ereignis {
   margin-bottom: 20px;
 }

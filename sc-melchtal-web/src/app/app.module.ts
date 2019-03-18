@@ -19,7 +19,7 @@ import {NgxGalleryModule} from 'ngx-gallery';
 import 'hammerjs';
 import {AlbumComponent} from './album/album.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatIconModule, MatSelectModule, MatTabsModule} from '@angular/material';
+import {MatExpansionModule, MatIconModule, MatSelectModule, MatTabsModule} from '@angular/material';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 // Cloudinary
@@ -67,6 +67,7 @@ registerLocaleData(localeDe);
     MatTabsModule,
     MatSelectModule,
     MatIconModule,
+    MatExpansionModule,
     NgbModule,
     NgxGalleryModule,
     CloudinaryModule.forRoot(Cloudinary, {
@@ -77,7 +78,7 @@ registerLocaleData(localeDe);
     EffectsModule.forRoot([ProgrammEffects, VorstandEffects, NewsEffects, AppEffects, RouterEffects]),
     StoreModule.forRoot(reducers, { metaReducers }),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
-    StoreRouterConnectingModule.forRoot({ stateKey: 'router'}),
+    StoreRouterConnectingModule.forRoot(),
     Angulartics2Module.forRoot()
   ],
   providers: [

@@ -39,8 +39,10 @@ export class ContentfulService {
     }, query))
       .then(res => {
         const programm = new Programm();
+        const ereignisse = new Array<Ereignis>();
         res.items.forEach(item => {
           const ereignies = new Ereignis();
+          ereignies.id = item.fields['id'];
           ereignies.title = item.fields['title'];
           ereignies.description = item.fields['description'];
           ereignies.dateFrom = new Date(item.fields['dateFrom']);
@@ -56,8 +58,9 @@ export class ContentfulService {
           if (item.fields['contact'] != null) {
             ereignies.contact = this.mapvorstandsmitglied(item.fields['contact'], res);
           }
-          programm.ereignisse.push(ereignies);
+          ereignisse.push(ereignies);
         });
+        programm.ereignisse = ereignisse;
         return programm;
       });
   }

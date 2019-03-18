@@ -1,6 +1,7 @@
 import {Vorstandsmitglied} from './Vorstandsmitglied.model';
 
 export class Ereignis {
+  id: string;
   dateFrom: Date;
   dateTo: Date;
   title: string;
