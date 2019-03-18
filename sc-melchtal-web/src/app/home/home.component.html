@@ -8,20 +8,24 @@
 <div class="row justify-content-md-center">
   <div class="col-md-12">
 
-    <div *ngFor="let newsItem of news$ | async" id="home_news">
-      <div class="card">
-        <div class="card-header">
-          <h3 class="d-lg-inline-block">{{newsItem.title}}</h3>
-          <div class="float-lg-right">Veröffentlicht: {{newsItem.created | date : 'shortDate'}}</div>
-        </div>
-        <div class="card-body">
-          <p [innerHTML]="newsItem.text | mdToHtml"></p>
-          <a class="card-link" *ngIf="newsItem.attachement" href="{{newsItem.attachement.url}}"><mat-icon>get_app</mat-icon> {{newsItem.attachement.filename}}</a>
-          <p class="card-text">
-            <small class="text-muted">Author: {{newsItem.author.nachname}} {{newsItem.author.vorname}} ({{newsItem.author.role}})</small>
-            <br class="d-sm-none" />
-            <small class="float-md-right text-muted">Zuletzt geändert: {{newsItem.updated | date : 'shortDate'}}</small>
-          </p>
+    <button type="button" class="btn btn-primary btn-lg btn-block" (click)="toggleShowPastNews()"
+            [attr.aria-expanded]="!isCollapsed" aria-controls="collapseVergangenheit">{{showButtonText()}} <mat-icon>{{isCollapsed ? 'expand_more' : 'expand_less'}}</mat-icon></button>
+    <div id="collapseVergangenheit" [ngbCollapse]="isCollapsed">
+      <div *ngFor="let newsItem of news$ | async" id="home_news">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="d-lg-inline-block">{{newsItem.title}}</h3>
+            <div class="float-lg-right">Veröffentlicht: {{newsItem.created | date : 'shortDate'}}</div>
+          </div>
+          <div class="card-body">
+            <p [innerHTML]="newsItem.text | mdToHtml"></p>
+            <a class="card-link" *ngIf="newsItem.attachement" href="{{newsItem.attachement.url}}"><mat-icon>get_app</mat-icon> {{newsItem.attachement.filename}}</a>
+            <p class="card-text">
+              <small class="text-muted">Author: {{newsItem.author.nachname}} {{newsItem.author.vorname}} ({{newsItem.author.role}})</small>
+              <br class="d-sm-none" />
+              <small class="float-md-right text-muted">Zuletzt geändert: {{newsItem.updated | date : 'shortDate'}}</small>
+            </p>
+          </div>
         </div>
       </div>
     </div>

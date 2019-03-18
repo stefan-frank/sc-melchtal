@@ -20,6 +20,9 @@ export class HomeComponent implements OnInit {
   galleryImages: NgxGalleryImage[];
   ereignisse: Ereignis[];
   news$: Observable<News[]>;
+  private isCollapsed = true;
+  SHOW_BUTTON_ANZEIGEN = 'Ältere News';
+  SHOW_BUTTON_AUSBLENDEN = 'Ältere News';
 
   constructor(
     private store: Store<fromStore.State>,
@@ -74,5 +77,14 @@ export class HomeComponent implements OnInit {
 
   routeTo(target: string, fragment?: string) {
     this.router.navigate([target], {fragment: fragment});
+  }
+
+  toggleShowPastNews() {
+    this.isCollapsed = !this.isCollapsed;
+    document.getElementById('top').scrollIntoView({ behavior: 'smooth'});
+  }
+
+  public showButtonText(): string {
+    return this.isCollapsed ? this.SHOW_BUTTON_ANZEIGEN : this.SHOW_BUTTON_AUSBLENDEN;
   }
 }
