@@ -8,7 +8,7 @@
 <div class="row justify-content-md-center">
   <div class="col-md-12">
     <div *ngFor="let newsItem of news$ | async" id="home_news">
-      <div *ngIf="newsItem.isVisible" class="card">
+      <div class="card">
         <div class="card-header">
           <h3 class="d-lg-inline-block">{{newsItem.title}}</h3>
           <div class="float-lg-right">Veröffentlicht: {{newsItem.created | date : 'shortDate'}}</div>
