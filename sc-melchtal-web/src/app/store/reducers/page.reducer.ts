@@ -8,7 +8,7 @@ export interface State {
 
 export const initialState: State = {
   currentPage: Page.Home
-}
+};
 
 export const getPage = (state: State) => state.currentPage;
 

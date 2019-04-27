@@ -12,7 +12,7 @@ export const initialState: State  = {
   programm: new Programm(),
   status: 'uninitialized',
   dataLoadedFromApi: false
-}
+};
 
 export const getProgramm = (state: State) => state.programm;
 export const getProgrammStatus = (state: State) => state.status;

@@ -10,7 +10,7 @@ export interface State {
 export const initialState: State = {
   news: new Array<News>(),
   dataLoadedFromApi: false
-}
+};
 
 export const getNews = (state: State) => state.news;
 export const getDataLoadedFromApi = (state: State) => state.dataLoadedFromApi;

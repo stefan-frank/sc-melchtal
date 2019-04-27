@@ -10,10 +10,12 @@ import {OberwendComponent} from './oberwend/oberwend.component';
 import {KontaktComponent} from './kontakt/kontakt.component';
 import {GallerieComponent} from './gallerie/gallerie.component';
 import {Page} from './constants';
+import {NewsComponent} from './news/news.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/' + Page.Home, pathMatch: 'full'},
   {path: Page.Programm, component: ProgrammComponent},
+  {path: Page.News, component: NewsComponent},
   {path: Page.Home, component: HomeComponent},
   {path: Page.Vorstand, component: VorstandComponent},
   {path: Page.Jo, component: JoComponent},

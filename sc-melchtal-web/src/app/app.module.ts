@@ -40,6 +40,7 @@ import {RouterStateSerializer, StoreRouterConnectingModule} from '@ngrx/router-s
 import {CustomSerializer} from './store/router.utils';
 import {RouterEffects} from './store/effects/router.effects';
 import { MdToHtmlPipe } from './md-to-html.pipe';
+import { NewsComponent } from './news/news.component';
 
 registerLocaleData(localeDe);
 
@@ -57,7 +58,8 @@ registerLocaleData(localeDe);
     JoComponent,
     AlbumComponent,
     VorstandsmitgliedComponent,
-    MdToHtmlPipe
+    MdToHtmlPipe,
+    NewsComponent
   ],
   imports: [
     BrowserModule,

@@ -10,7 +10,7 @@ export interface State {
 export const initialState: State = {
   vorstand: new Vorstand(),
   dataLoadedFromApi: false
-}
+};
 
 export const getVorstand = (state: State) => state.vorstand;
 export const getDataLoadedFromApi = (state: State) => state.dataLoadedFromApi;

@@ -1,5 +1,6 @@
 export enum Page {
   Home = 'home',
+  News = 'news',
   Oberwend = 'oberwend',
   Programm = 'programm',
   Vorstand = 'vorstand',

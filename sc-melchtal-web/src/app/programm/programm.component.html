@@ -20,7 +20,7 @@
         </div>
         <div class="card-body">
           <div class="card-text">
-            <p [innerHTML]="event.description | mdToHtml" id="description"></p>
+            <p [innerHTML]="event.description | mdToHtml" class="description"></p>
             <div *ngIf="(event.anmeldung || event.auskunft) && event.contact">
               <div style="font-weight: bold">
                 <span *ngIf="event.anmeldung">Anmeldung</span>
@@ -63,7 +63,7 @@
       </div>
       <div class="card-body">
         <div class="card-text">
-          <p [innerHTML]="event.description | mdToHtml" id="description"></p>
+          <p [innerHTML]="event.description | mdToHtml" class="description"></p>
           <div *ngIf="(event.anmeldung || event.auskunft) && event.contact">
             <div style="font-weight: bold">
               <span *ngIf="event.anmeldung">Anmeldung</span>

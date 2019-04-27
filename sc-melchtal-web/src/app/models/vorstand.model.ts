@@ -1,5 +1,5 @@
 import {Asset} from './asset.model';
-import {Vorstandsmitglied} from "./Vorstandsmitglied.model";
+import {Vorstandsmitglied} from './Vorstandsmitglied.model';
 
 export enum VorstandsRole {
   PRAESIDENT = 'Präsident',

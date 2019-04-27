@@ -96,7 +96,7 @@ function mapToPageEnum(routePath: string): Page {
     if (Page[page] === routePath) {
       result = Page[page];
     }
-  })
+  });
   return result;
 }
 
