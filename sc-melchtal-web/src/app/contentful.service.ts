@@ -7,6 +7,7 @@ import {environment} from '../environments/environment';
 import {Programm} from './models/programm.model';
 import {Ereignis} from './models/ereignis.model';
 import {Vorstandsmitglied} from './models/Vorstandsmitglied.model';
+import { Document } from '@contentful/rich-text-types';
 
 const CONFIG = {
   space: '56vs0juzkteh',
@@ -15,7 +16,8 @@ const CONFIG = {
   contentTypeIds: {
     ereignis: 'DeHXg4DzkkqWOMy6kA2ao',
     news: 'news',
-    vorstand: 'l4eND8PJu0kMseQoe28w2'
+    vorstand: 'l4eND8PJu0kMseQoe28w2',
+    statuten: 'statuten'
   }
 };
 
@@ -125,6 +127,21 @@ export class ContentfulService {
         });
         return news;
       });
+  }
+
+  public getStatuten(query?: object): Promise<Document> {
+    return this.cdaClient.getEntries(Object.assign({
+      content_type: CONFIG.contentTypeIds.statuten
+    }, query)).then(
+      res => {
+        let document: Document;
+        res.items.forEach(item => {
+          document = item.fields['inhalt'];
+          console.log('Statuen: ' + document);
+        });
+        return document;
+      }
+    );
   }
 }
 

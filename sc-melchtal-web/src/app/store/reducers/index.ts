@@ -10,6 +10,7 @@ import * as fromProgramm from './programm.reducer';
 import * as fromVorstand from './vorstand.reducer';
 import * as fromNews from './news.reducer';
 import * as fromPage from './page.reducer';
+import * as fromStatuten from './statuten.reducer';
 import * as fromRouter from '@ngrx/router-store';
 import {RouterStateUrl} from '../router.utils';
 
@@ -18,6 +19,7 @@ export interface State {
   vorstand: fromVorstand.State;
   news: fromNews.State;
   page: fromPage.State;
+  statuten: fromStatuten.State;
   router: fromRouter.RouterReducerState<RouterStateUrl>;
 }
 
@@ -26,6 +28,7 @@ export const reducers: ActionReducerMap<State> = {
   vorstand: fromVorstand.reducer,
   news: fromNews.reducer,
   page: fromPage.reducer,
+  statuten: fromStatuten.reducer,
   router: fromRouter.routerReducer
 };
 
@@ -47,5 +50,9 @@ export const getNewsDataLoadedFromApi = createSelector(selectNewsState, fromNews
 
 export const selectPageState = createFeatureSelector<fromPage.State>('page');
 export const getPage = createSelector(selectPageState, fromPage.getPage);
+
+export const selectStatutenState = createFeatureSelector<fromStatuten.State>('statuten');
+export const getStatuten = createSelector(selectStatutenState, fromStatuten.getInhalt);
+export const getStatutenDataLoadedFromApi = createSelector(selectStatutenState, fromStatuten.getDataLoadedFromApi);
 
 export const getRouterState = createFeatureSelector<fromRouter.RouterReducerState<RouterStateUrl>>('router');

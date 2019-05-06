@@ -11,6 +11,7 @@ import {KontaktComponent} from './kontakt/kontakt.component';
 import {GallerieComponent} from './gallerie/gallerie.component';
 import {Page} from './constants';
 import {NewsComponent} from './news/news.component';
+import {StatutenComponent} from './statuten/statuten.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/' + Page.Home, pathMatch: 'full'},
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path: Page.News, component: NewsComponent},
   {path: Page.Home, component: HomeComponent},
   {path: Page.Vorstand, component: VorstandComponent},
+  {path: Page.Statuten, component: StatutenComponent},
   {path: Page.Jo, component: JoComponent},
   {path: Page.Archiv, component: ArchivComponent},
   {path: Page.Links, component: LinksComponent},

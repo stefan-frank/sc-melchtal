@@ -24,6 +24,7 @@
     "@angular/platform-server": "^7.2.1",
     "@angular/router": "^7.2.1",
     "@cloudinary/angular-5.x": "^1.0.2",
+    "@contentful/rich-text-html-renderer": "^13.1.0",
     "@ng-bootstrap/ng-bootstrap": "^3.3.1",
     "@ngrx/effects": "^7.1.0",
     "@ngrx/router-store": "^7.1.0",

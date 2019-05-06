@@ -41,6 +41,8 @@ import {CustomSerializer} from './store/router.utils';
 import {RouterEffects} from './store/effects/router.effects';
 import { MdToHtmlPipe } from './md-to-html.pipe';
 import { NewsComponent } from './news/news.component';
+import { StatutenComponent } from './statuten/statuten.component';
+import {StatutenEffects} from './store/effects/statuten.effects';
 
 registerLocaleData(localeDe);
 
@@ -59,7 +61,8 @@ registerLocaleData(localeDe);
     AlbumComponent,
     VorstandsmitgliedComponent,
     MdToHtmlPipe,
-    NewsComponent
+    NewsComponent,
+    StatutenComponent
   ],
   imports: [
     BrowserModule,
@@ -77,7 +80,7 @@ registerLocaleData(localeDe);
       api_key: '347475193959746',
       api_secret: 'hKSkFsXVCsSPtJ5TUL-CKnfIXCc'
     }),
-    EffectsModule.forRoot([ProgrammEffects, VorstandEffects, NewsEffects, AppEffects, RouterEffects]),
+    EffectsModule.forRoot([ProgrammEffects, VorstandEffects, NewsEffects, AppEffects, RouterEffects, StatutenEffects]),
     StoreModule.forRoot(reducers, { metaReducers }),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     StoreRouterConnectingModule.forRoot(),
