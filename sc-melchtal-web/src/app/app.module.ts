@@ -47,7 +47,6 @@ import {AngularFireModule} from '@angular/fire';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
 import { TestComponent } from './test/test.component';
 import { LoginComponent } from './auth/login/login.component';
-import { SignupComponent } from './auth/signup/signup.component';
 import {AuthService} from './auth/auth.service';
 import { MaterialModule } from './material.module';
 import {FlexLayoutModule} from '@angular/flex-layout';
@@ -78,8 +77,7 @@ registerLocaleData(localeDe);
     NewsComponent,
     StatutenComponent,
     TestComponent,
-    LoginComponent,
-    SignupComponent
+    LoginComponent
   ],
   imports: [
     BrowserModule,

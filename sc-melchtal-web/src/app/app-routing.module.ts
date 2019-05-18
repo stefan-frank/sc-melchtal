@@ -13,7 +13,6 @@ import {Page} from './constants';
 import {NewsComponent} from './news/news.component';
 import {StatutenComponent} from './statuten/statuten.component';
 import {TestComponent} from './test/test.component';
-import {SignupComponent} from './auth/signup/signup.component';
 import {LoginComponent} from './auth/login/login.component';
 import {AuthGuard} from './auth/auth.guard';
 
@@ -31,7 +30,6 @@ const routes: Routes = [
   {path: Page.Kontakt, component: KontaktComponent},
   {path: Page.Gallerie, component: GallerieComponent},
   {path: 'test', component: TestComponent},
-  {path: Page.Signup, component: SignupComponent},
   {path: Page.Login, component: LoginComponent}
 ];
 

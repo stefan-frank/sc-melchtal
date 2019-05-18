@@ -7,7 +7,11 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "cypress open"
+    "e2e": "cypress open",
+    "build-prod": "ng build --prod",
+    "test-ci": "ng serve",
+    "e2e-ci": "npx cypress run",
+    "deploy": "firebase deploy --token $FIREBASE_TOKEN --non-interactive"
   },
   "private": true,
   "dependencies": {
