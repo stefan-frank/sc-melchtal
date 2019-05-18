@@ -1,0 +1,11 @@
+{
+  "hosting": {
+    "public": "dist/sc-melchtal-web",
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}

@@ -8,6 +8,7 @@ import {Programm} from './models/programm.model';
 import {Ereignis} from './models/ereignis.model';
 import {Vorstandsmitglied} from './models/Vorstandsmitglied.model';
 import { Document } from '@contentful/rich-text-types';
+import {ArchivedDocuments} from './archiv/archiv.model';
 
 const CONFIG = {
   space: '56vs0juzkteh',
@@ -17,7 +18,8 @@ const CONFIG = {
     ereignis: 'DeHXg4DzkkqWOMy6kA2ao',
     news: 'news',
     vorstand: 'l4eND8PJu0kMseQoe28w2',
-    statuten: 'statuten'
+    statuten: 'statuten',
+    archivedDocuments: 'archivedDocuments'
   }
 };
 
@@ -32,6 +34,27 @@ export class ContentfulService {
   });
 
   constructor() {
+  }
+
+  public getArchivedDocuments(query?: object): Promise<ArchivedDocuments[]> {
+    return this.cdaClient.getEntries(Object.assign({
+      content_type: CONFIG.contentTypeIds.archivedDocuments,
+      order: '-fields.date'
+    }, query)).then(
+      res => {
+        const archivedDocuments = [];
+        res.items.forEach(item => {
+          const archivedDocument = {
+            date: new Date(item.fields['date']),
+            name: item.fields['name'],
+            type: item.fields['type'],
+            document: mapAssetInfoToObject(item.fields['document'], res.includes['Asset'])
+          };
+
+          archivedDocuments.push(archivedDocument);
+        });
+        return archivedDocuments;
+      });
   }
 
   public getEvents(query?: object): Promise<Programm> {

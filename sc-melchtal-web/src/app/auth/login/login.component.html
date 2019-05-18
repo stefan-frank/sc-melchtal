@@ -1,0 +1,90 @@
+<section fxLayout="rows" fxLayoutAlign="center" *ngIf="!isAuthServiceReady">
+  <mat-spinner></mat-spinner>
+</section>
+<section *ngIf="isAuthServiceReady" class="signup-form">
+  <mat-tab-group mat-align-tabs="center" fxLayoutGap="10px">
+    <mat-tab label="Einfaches Login">
+      <form fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px" #fSimple="ngForm" (ngSubmit)="onSubmitSimple(fSimple)">
+        <mat-form-field hintLabel="Passwort gemäss Sommerprogramm">
+          <input
+            type="password"
+            matInput
+            placeholder="Passwort"
+            ngModel
+            name="password"
+            required
+            minlength="4"
+            #pwInput="ngModel"
+          >
+        </mat-form-field>
+        <button *ngIf="!isLoading" type="submit" mat-raised-button color="primary" [disabled]="fSimple.invalid">Login</button>
+        <mat-spinner *ngIf="isLoading"></mat-spinner>
+      </form>
+    </mat-tab>
+    <mat-tab label="Richtiges Login">
+      <form fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px" #fEmail="ngForm" (ngSubmit)="onSubmitEmail(fEmail)">
+        <mat-form-field>
+          <input
+            type="email"
+            matInput
+            placeholder="e-Mail Adresse"
+            ngModel
+            name="email"
+            email
+            required
+            #emailInput="ngModel"
+          >
+          <mat-error *ngIf="!emailInput.hasError('required')">e-Mail ist ungültig</mat-error>
+          <mat-error *ngIf="emailInput.hasError('required')">e-Mail fehlt</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input
+            type="password"
+            matInput
+            placeholder="Passwort"
+            ngModel
+            name="password"
+            required
+            minlength="6"
+            #pwInput="ngModel"
+          >
+        </mat-form-field>
+        <button *ngIf="!isLoading" type="submit" mat-raised-button color="primary" [disabled]="fEmail.invalid">Login</button>
+        <mat-spinner *ngIf="isLoading" ></mat-spinner>
+      </form>
+    </mat-tab>
+    <mat-tab label="Registrieren">
+      <form fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px" #fRegister="ngForm" (ngSubmit)="onSubmitRegister(fRegister)">
+        <mat-form-field>
+          <input
+            type="email"
+            matInput
+            placeholder="e-Mail Adresse"
+            ngModel
+            name="email"
+            email
+            required
+            #emailInput="ngModel"
+          >
+          <mat-error *ngIf="!emailInput.hasError('required')">e-Mail ist ungültig</mat-error>
+          <mat-error *ngIf="emailInput.hasError('required')">e-Mail fehlt</mat-error>
+        </mat-form-field>
+        <mat-form-field hintLabel="Mindestlänge 6 Zeichen">
+          <input
+            type="password"
+            matInput
+            placeholder="Passwort"
+            ngModel
+            name="password"
+            required
+            minlength="6"
+            #pwInput="ngModel"
+          >
+          <mat-hint align="end">{{ pwInput.value?.length }} / 6</mat-hint>
+        </mat-form-field>
+        <button *ngIf="!isLoading" type="submit" mat-raised-button color="primary" [disabled]="fRegister.invalid">Registrieren</button>
+        <mat-spinner *ngIf="isLoading" ></mat-spinner>
+      </form>
+    </mat-tab>
+  </mat-tab-group>
+</section>

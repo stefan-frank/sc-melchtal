@@ -1,0 +1,28 @@
+div nav {
+  background-color: #334A97;
+  /*  color: white; */
+}
+
+a.nav-link {
+  color: white;
+}
+
+img.img-fluid {
+  margin-bottom: 25px;
+}
+
+.navbar-toggler {
+  color: white;
+  border-color: white;
+}
+
+h1 {
+  font-size: x-large;
+  font-weight: bolder;
+  color: white;
+  margin-bottom: 0em;
+}
+
+.mat-icon {
+  font-size: 16px;
+}
