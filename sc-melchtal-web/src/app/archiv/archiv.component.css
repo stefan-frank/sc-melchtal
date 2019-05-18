@@ -1,0 +1,21 @@
+/* Structure */
+/*table {
+  width: 100%;
+}*/
+
+/*.mat-radio-button ~ .mat-radio-button {
+  margin-left: 8px;
+}*/
+
+.mat-column-date {
+  flex: 0 0 80px;
+}
+
+.mat-column-url {
+  flex: 0 0 80px;
+  align-items: center;
+}
+
+.mat-radio-button {
+  font-size: 12px;
+}

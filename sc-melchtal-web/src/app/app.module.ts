@@ -16,10 +16,8 @@ import {HttpClientModule} from '@angular/common/http';
 import {registerLocaleData} from '@angular/common';
 import localeDe from '@angular/common/locales/de';
 import {NgxGalleryModule} from 'ngx-gallery';
-import 'hammerjs';
 import {AlbumComponent} from './album/album.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatExpansionModule, MatIconModule, MatSelectModule, MatTabsModule} from '@angular/material';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 // Cloudinary
@@ -43,12 +41,28 @@ import { MdToHtmlPipe } from './md-to-html.pipe';
 import { NewsComponent } from './news/news.component';
 import { StatutenComponent } from './statuten/statuten.component';
 import {StatutenEffects} from './store/effects/statuten.effects';
+import {AngularFirestoreModule} from '@angular/fire/firestore';
+import {AngularFireAuthModule} from '@angular/fire/auth';
+import {AngularFireModule} from '@angular/fire';
+import {AngularFireDatabaseModule} from '@angular/fire/database';
+import { TestComponent } from './test/test.component';
+import { LoginComponent } from './auth/login/login.component';
+import { SignupComponent } from './auth/signup/signup.component';
+import {AuthService} from './auth/auth.service';
+import { MaterialModule } from './material.module';
+import {FlexLayoutModule} from '@angular/flex-layout';
+import {FormsModule} from '@angular/forms';
+import {HeaderComponent} from './header/header.component';
+import {MatPaginatorIntl, MatPaginatorModule, MatProgressSpinnerModule, MatRadioModule} from '@angular/material';
+import {UIService} from './shared/ui.service';
+import {getGermanPaginatorIntl} from './german-paginator-intl';
 
 registerLocaleData(localeDe);
 
 @NgModule({
   declarations: [
     AppComponent,
+    HeaderComponent,
     ProgrammComponent,
     HomeComponent,
     GallerieComponent,
@@ -62,17 +76,19 @@ registerLocaleData(localeDe);
     VorstandsmitgliedComponent,
     MdToHtmlPipe,
     NewsComponent,
-    StatutenComponent
+    StatutenComponent,
+    TestComponent,
+    LoginComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    MaterialModule,
+    FormsModule,
     AppRoutingModule,
     HttpClientModule,
-    MatTabsModule,
-    MatSelectModule,
-    MatIconModule,
-    MatExpansionModule,
+    FlexLayoutModule,
     NgbModule,
     NgxGalleryModule,
     CloudinaryModule.forRoot(Cloudinary, {
@@ -81,14 +97,23 @@ registerLocaleData(localeDe);
       api_secret: 'hKSkFsXVCsSPtJ5TUL-CKnfIXCc'
     }),
     EffectsModule.forRoot([ProgrammEffects, VorstandEffects, NewsEffects, AppEffects, RouterEffects, StatutenEffects]),
-    StoreModule.forRoot(reducers, { metaReducers }),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    StoreModule.forRoot(reducers, {metaReducers}),
+    StoreDevtoolsModule.instrument({maxAge: 25, logOnly: environment.production}),
     StoreRouterConnectingModule.forRoot(),
-    Angulartics2Module.forRoot()
+    Angulartics2Module.forRoot(),
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
+    AngularFireAuthModule,
+    AngularFireDatabaseModule,
+    MatPaginatorModule,
+    MatRadioModule,
+    MatProgressSpinnerModule
   ],
   providers: [
     {provide: LOCALE_ID, useValue: 'de'},
-    {provide: RouterStateSerializer, useClass: CustomSerializer}
+    {provide: RouterStateSerializer, useClass: CustomSerializer},
+    {provide: MatPaginatorIntl, useValue: getGermanPaginatorIntl()},
+    [AuthService, UIService]
   ],
   bootstrap: [AppComponent]
 })

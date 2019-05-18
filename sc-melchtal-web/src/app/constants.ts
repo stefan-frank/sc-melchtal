@@ -9,6 +9,9 @@ export enum Page {
   Archiv = 'archiv',
   Links = 'links',
   Kontakt = 'kontakt',
-  Gallerie = 'gallerie'
+  Gallerie = 'gallerie',
+  Login = 'login',
+  Logout = 'logout',
+  Signup = 'signup'
 }
 
